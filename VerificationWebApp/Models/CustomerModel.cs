@@ -26,7 +26,9 @@ namespace VerificationWebApp.Models
 		public string motherName { get; set; }
 
 		//[Required]
-		public IFormFile file { get; set; }
+		//public IFormFile file { get; set; }
+
+		public string imgData { get; set; }
 
 	}
 }

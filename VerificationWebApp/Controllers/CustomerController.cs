@@ -25,38 +25,30 @@ namespace VerificationWebApp.Controllers
             {
                 //convert the image to png
                 bool blnStatus = false;
-                var extension = Path.GetExtension(customer.file.FileName);
 
-                if (extension == @".png")
+                //convert file
+                var objPayLoad = new PayLoad() {
+                    pinNumber = customer.ghCardNo.Trim(),
+                    image = new ImageFormatter() { rawBase64String = customer.imgData }.trimBase64String(),
+                    dataType = @"PNG",
+                    center = @"BRANCHLESS",
+                    merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
+                };
+
+                var api = new ApiServer();
+                var dt = await api.ApiRequestDataAsync(objPayLoad);
+
+                try
                 {
-                    //convert file
-                    var objPayLoad = new PayLoad() {
-                        pinNumber = customer.ghCardNo.Trim(),
-                        image = new ImageFormatter() { uploadedFile = customer.file }.convertToBase64String(),
-                        dataType = extension.Replace(".", "").Trim().ToUpper(),
-                        center = @"BRANCHLESS",
-                        merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
-                    };
-
-                    var api = new ApiServer();
-                    var dt = await api.ApiRequestDataAsync(objPayLoad);
-
-                    try
-                    {
-                        blnStatus = dt.verified == @"TRUE" ? true : false;
-                    }
-                    catch (Exception xx)
-                    {
-
-                    }
-
-                    return Json(new { status = blnStatus.ToString(), data = dt });
+                    blnStatus = dt.verified == @"TRUE" ? true : false;
                 }
-                else
+                catch (Exception xx)
                 {
-                    var imgByte = await new ImageFormatter() { uploadedFile = customer.file }.ConvertToBytes();
-                    return Json(true);
+                    Debug.Print($"error: {xx.Message}");
                 }
+
+                return Json(new { status = blnStatus.ToString(), data = dt });
+                
             }
             catch(Exception x)
             {

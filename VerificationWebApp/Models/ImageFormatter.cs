@@ -12,6 +12,8 @@ namespace VerificationWebApp.Models
 	{
 		
 		public IFormFile uploadedFile { get; set; }
+        public string rawBase64String { get; set; }
+
 
 		public async Task<byte[]> ConvertToBytes()
         {
@@ -68,6 +70,13 @@ namespace VerificationWebApp.Models
 
 
             return base64String;
+        }
+
+        public string trimBase64String()
+        {
+            string regx = @"data:image/png;base64,";
+
+            return this.rawBase64String.Replace(regx, "").Trim();
         }
 
 	}
