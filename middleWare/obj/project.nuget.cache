@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "x3EJ7WayGsLvt8qHwteEEd34rfwLjviGyLW4TXSuWNYxbE+c/3pmDAPQWmca0Jh8i96qfnL9G5gd2DDc0rh6qQ==",
+  "success": true,
+  "projectFilePath": "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj",
+  "expectedPackageFiles": [
+    "/Users/nana/.nuget/packages/json.net/1.0.33/json.net.1.0.33.nupkg.sha512",
+    "/Users/nana/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

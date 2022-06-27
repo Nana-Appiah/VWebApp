@@ -1,0 +1,164 @@
+﻿
+<div class="container">
+    
+    <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype = "multipart/form-data">
+
+        <div class="container">
+            <h3>Select a Photo</h3>
+            <div class="profile-pic-div form-group" id="picDiv">
+                <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto" />
+                <input type="file" id="file"  name="customer.file" accept="Image/png">
+                <label for="file" id="uploadBtn">Choose Photo</label>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-100">
+                <label for="actNo">Enter PASL Acc No.</label>
+            </div>
+            <div class="col-100">
+                <input type="text" id="actNo" name="customer.actNo" placeholder="Enter your account number here..." class="form-control">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-100">
+                <label for="ghCardNo">Ghana Card No (eg: GHA-xxxxxxxxx-x)</label>
+            </div>
+            <div class="col-100">
+                <input type="text" id="ghCardNo" name="customer.ghCardNo" placeholder="Your Ghana card number goes here..." class="form-control">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-100">
+                <label for="TelNo">Telephone No (eg:024xxxxxxx)</label>
+            </div>
+            <div class="col-100">
+                <input type="text" id="TelNo" name="customer.TelNo" placeholder="Enter telephone number on file..." class="form-control">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-100">
+                <label for="motherName">Mother's Maiden Name (eg:Adwoa Kum)</label>
+            </div>
+            <div class="col-100">
+                <input type="text" id="motherName" name="customer.motherName" placeholder="Enter maiden name of your mother..." class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" id="btnSubmit" value="Click to Verify">
+        </div>
+
+    </form>
+
+    <script>
+        const inpFile = document.getElementById("file");
+        const picDiv = document.getElementById("picDiv");
+        const photo = picDiv.querySelector(".imgPhoto");
+        const submitBtn = document.getElementById("btnSubmit");
+
+        inpFile.addEventListener("change", function () {
+            const file = this.files[0];
+
+            if (file) {
+
+                const reader = new FileReader();
+                photo.style.display = "block";
+
+                reader.addEventListener("load", function () {
+                    photo.setAttribute("src", this.result);
+                })
+
+                reader.readAsDataURL(file);
+            }
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function handleResponse(res) {
+                
+                $("div.loader").hide();
+
+                /* check if success is from response, is FALSE or not set */
+                if (!res.isSuccess) {
+                    
+                    /* handle unsuccessful scenario */
+                }
+                else {
+                    
+                    /* handle successful scenario */
+                    showSuccessMessage();
+                }
+            }
+
+            function handleError(err) {
+                $("div.loader").hide();
+                if (xhr.responseText)
+                    showErrorMessage(xhr.responseText);
+                else
+                    showErrorMessage("Error has occured. Please try again later.");
+            }
+
+            function showErrorMessage(message) {
+                
+                // show a popup logic or an alert logic
+                var popup = $('#errorAlert');
+                popup.removeClass('d-none');
+
+                setTimeout(() => {
+                    popup.addClass('d-none');
+                }, 5000);
+            }
+
+            function showSuccessMessage(message) {
+                
+                // show a popup logic or an alert logic
+                var popup = $('#successAlert');
+                popup.text(message);
+                popup.removeClass('d-none');
+
+                setTimeout(() => {
+                    popup.addClass('d-none');
+                }, 5000);
+            }
+
+        /* submit event click */
+
+            $('#verifyForm').on('submit', function (e) {
+                e.preventDefault();
+
+                $('body').addClass('loading');
+
+                var f = $(e.currentTarget);
+                
+                var form = $('#verifyForm')[0];
+                var dt = new FormData(form);
+                console.log(dt);
+                
+                $.ajax({
+                    type: 'POST',
+                    url: f.attr('action'),
+                    data: dt,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: handleResponse,
+                    error: handleError
+                });
+
+            });
+
+        });
+
+    </script>
+
+    
+</div>

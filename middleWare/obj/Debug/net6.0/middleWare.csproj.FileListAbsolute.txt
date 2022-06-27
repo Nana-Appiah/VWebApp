@@ -1,0 +1,12 @@
+/Users/nana/Projects/VerificationWebApp/middleWare/bin/Debug/net6.0/middleWare.deps.json
+/Users/nana/Projects/VerificationWebApp/middleWare/bin/Debug/net6.0/middleWare.dll
+/Users/nana/Projects/VerificationWebApp/middleWare/bin/Debug/net6.0/middleWare.pdb
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.csproj.AssemblyReference.cache
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.AssemblyInfoInputs.cache
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.AssemblyInfo.cs
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.csproj.CoreCompileInputs.cache
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.dll
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/refint/middleWare.dll
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.pdb
+/Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/ref/middleWare.dll
