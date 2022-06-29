@@ -2,15 +2,18 @@
 <div class="container">
 
     <div id="myModal" class="modal">
-        
-        <div class="modal-content">
+
+
+        <div class="modal-content parent" style="border: 5px solid yellow">
             <span class="close">&times;</span>
             <p>Take a Selfie Picture</p>
-            <div>
-                <video id="vid" width="300" height="550" autoplay></video>
-                <canvas id="c" style="display:none;"></canvas>
+            <div class="child" style="border:5px solid red;">
+                <video id="vid" height="350" width="500" class="child" style="border:3px solid black;" autoplay></video>
+                <canvas id="c"></canvas>
             </div>
+
         </div>
+        
 
         <div>
             <button id="takeApic" class="btn">Take a Pic</button>&nbsp;
@@ -18,16 +21,19 @@
         </div>
 
     </div>
-    <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
+
+
+    <form onload="animatePage()" method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
 
         <div class="container">
-            <h3>Select a Photo</h3>
-            <div class="profile-pic-div form-group" id="picDiv">
-                <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto" />
-                <!--
-        <input type="file" id="file" name="customer.file" accept="Image/png">-->
-                <label for="file" id="uploadBtn">Click to snap a Photo</label>
-
+            <div class="parent">
+                <div>
+                    <div class="profile-pic-div form-group" id="picDiv">
+                        <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto" height="640" width="480" />
+                        <!--<input type="file" id="file" name="customer.file" accept="Image/png">-->
+                        <label for="file" id="uploadBtn">Click to snap a Photo</label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -101,13 +107,9 @@
             }
 
         });
-
-        
     </script>
 
-    <script>
-
-        const modal = document.getElementById("myModal");
+    <script>const modal = document.getElementById("myModal");
         const span = document.getElementsByClassName("close")[0];
         const btn = document.getElementById("takeApic");
         const cancelBtn = document.getElementById("cancelBtn");
@@ -140,76 +142,76 @@
         var constraints = {
             audio: false,
             video: {
-                width: 200,
-                height: 200
+                width: 650,
+                height: 400
             }
         }
 
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-                document.getElementById("vid").srcObject = stream;
+            document.getElementById("vid").srcObject = stream;
 
-                /*playing the video*/
-                document.getElementById("vid").play();
-            })
-            .catch(function (err) {
-            /* handle the error */
-
+            /*playing the video*/
+            document.getElementById("vid").play();
         })
+            .catch(function (err) {
+                /* handle the error */
+
+            })
 
         function takeSnapShot() {
-            //function is responsible for taking a still photo
+            /* function is responsible for taking a still photo */
             const hidden_canvas = document.getElementById("c");
             const video = document.getElementById("vid");
             const photo = document.getElementById("photo");
 
-            //getting the exact size of the video element
             const width = video.getAttribute("width");
             const height = video.getAttribute("height");
-
             const context = hidden_canvas.getContext("2d");
-
+            
             //setting the dimensions of the hidden canvas to the video element
             hidden_canvas.width = width;
             hidden_canvas.height = height;
 
-            //draw a copy of the current frame from the video element
             context.drawImage(video, 0, 0, width, height);
 
             /* get an image dataURL from the canvas */
             const imageDataUrl = hidden_canvas.toDataURL("image/png");
+
+            /* resize image here */
+
+
             imgData.setAttribute("value", imageDataUrl);
 
-            console.log(imageDataUrl);
             //set the data URL as the source of the image
             photo.setAttribute("src", "");
             photo.setAttribute("src", imageDataUrl);
         }
 
-        document.getElementById("takeApic").addEventListener("click", () => {
-            //using the anonymous function to call the function that takes the selfie
+        btn.addEventListener("click", () => {
             takeSnapShot();
-        });</script>
+        });
+
+    </script>
 
     <script type="text/javascript">$(document).ready(function () {
 
             function handleResponse(res) {
 
-                $("div.loader").hide();
-
                 /* check if success is from response, is FALSE or not set */
-                if (!res.isSuccess) {
 
-                    /* handle unsuccessful scenario */
+                if (res.data.error.success.toString() == "true") {
+                    
+                    //console.log(res.data.error.toString());
+                    alert(res.data.error.data.toString());
                 }
                 else {
-
-                    /* handle successful scenario */
-                    showSuccessMessage();
+                    alert(res.data.error.data.toString());
+                    //showSuccessMessage();
                 }
             }
 
             function handleError(err) {
-                $("div.loader").hide();
+
                 if (xhr.responseText)
                     showErrorMessage(xhr.responseText);
                 else
@@ -245,8 +247,6 @@
 
             $('#verifyForm').on('submit', function (e) {
                 e.preventDefault();
-
-                $('body').addClass('loading');
 
                 var f = $(e.currentTarget);
 

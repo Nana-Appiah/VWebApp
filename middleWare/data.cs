@@ -22,9 +22,15 @@ namespace middleWare
 		public string success { get; set; }
 		public string code { get; set; }
 		public string msg { get; set; }
-	}
 
-	public class Person
+        #region for returning status messages to client
+
+		public Response error { get; set; }
+
+        #endregion
+    }
+
+    public class Person
     {
 		public string nationalId { get; set; }
 		public string cardId { get; set; }

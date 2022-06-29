@@ -44,6 +44,7 @@ namespace middleWare
                 HttpResponseMessage response =  client.PostAsync(baseURI, content).Result;
 
                 var ct = await response.Content.ReadAsStringAsync();
+                var errorObj = JsonConvert.DeserializeObject<Response>(ct);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -52,6 +53,7 @@ namespace middleWare
 
                     /* format data and send response of request to client */
                     o = new data();
+
                     o.transactionGuid = x["data"]["transactionGuid"].ToString();
                     o.shortGuid = x["data"]["shortGuid"].ToString();
                     o.requestTimestamp = x["data"]["requestTimestamp"].ToString();
@@ -63,8 +65,15 @@ namespace middleWare
                     o.success = x["success"].ToString();
                     o.code = x["code"].ToString();
                     o.msg = x["msg"].ToString();
-                }
 
+                    o.error = errorObj;
+                }
+                else
+                {
+                    o = new data() {
+                        error = errorObj
+                    };
+                }
                 return o;
             }
             catch(Exception x)
