@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+2W7yzSMGag9EXbxH5o3uM9iZwN7xgaz/yozD8tAaGU=",
+  "Hash": "eU59uIck2DKkpe0QCZhNOaE5wKc4QrNRkPYIdUkch1I=",
   "Source": "VerificationWebApp",
   "BasePath": "_content/VerificationWebApp",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/obj/Debug/net6.0/scopedcss/projectbundle/VerificationWebApp.bundle.scp.css"
     },
     {
+      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/.DS_Store",
+      "SourceId": "VerificationWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "BasePath": "_content/VerificationWebApp",
+      "RelativePath": ".DS_Store",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/.DS_Store"
+    },
+    {
       "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/css/form_css.css",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
@@ -66,23 +83,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/form_css.css"
-    },
-    {
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/css/loader.css",
-      "SourceId": "VerificationWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
-      "BasePath": "_content/VerificationWebApp",
-      "RelativePath": "css/loader.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/css/loader.css"
     },
     {
       "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/css/modal_css.css",
@@ -202,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/images/silhouette.jpeg"
+    },
+    {
+      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/js/imgPreviewer.js",
+      "SourceId": "VerificationWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "BasePath": "_content/VerificationWebApp",
+      "RelativePath": "js/imgPreviewer.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/imgPreviewer.js"
     },
     {
       "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/js/jquery-3.6.0.min.js",

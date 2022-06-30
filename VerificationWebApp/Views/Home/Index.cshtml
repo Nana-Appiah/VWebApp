@@ -1,37 +1,37 @@
 ﻿
 <div class="container">
 
-    <div id="myModal" class="modal">
+    <div class="container mt-5">
+        <div class="modal modal-lg" id="myModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Snap a Picture</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <video id="vid" class="form-control" autoplay></video>
+                        <canvas id="c" style="display:none;"></canvas>
+                    </div>
 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" id="cancelBtn" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="takeApic">Take a Pic</button>
+                    </div>
 
-        <div class="modal-content parent" style="border: 5px solid yellow">
-            <span class="close">&times;</span>
-            <p>Take a Selfie Picture</p>
-            <div class="child" style="border:5px solid red;">
-                <video id="vid" height="350" width="500" class="child" style="border:3px solid black;" autoplay></video>
-                <canvas id="c"></canvas>
+                </div>
             </div>
-
         </div>
-        
-
-        <div>
-            <button id="takeApic" class="btn">Take a Pic</button>&nbsp;
-            <button id="cancelBtn" class="btn">Close</button>
-        </div>
-
     </div>
 
-
-    <form onload="animatePage()" method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
+    <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
 
         <div class="container">
             <div class="parent">
                 <div>
                     <div class="profile-pic-div form-group" id="picDiv">
-                        <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto" height="640" width="480" />
-                        <!--<input type="file" id="file" name="customer.file" accept="Image/png">-->
-                        <label for="file" id="uploadBtn">Click to snap a Photo</label>
+                        <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
+                        <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
 
         <div class="row form-group">
             <div class="col-100">
-                <label for="actNo">Enter PASL Acc No.</label>
+                <label for="actNo">Enter Acc No.</label>
             </div>
             <div class="col-100">
                 <input type="text" id="actNo" name="customer.actNo" placeholder="Enter your account number here..." class="form-control">
@@ -77,46 +77,38 @@
             <br />
             <input type="text" id="imgData" name="customer.imgData" value="" hidden>
         </div>
-
-        <div class="row form-group">
+        <br />
+        <div class="row">
             <br />
             <input type="submit" id="btnSubmit" value="Click to Verify">
         </div>
 
     </form>
 
-    <script>const inpFile = document.getElementById("file");
-        const picDiv = document.getElementById("picDiv");
-        const photo = picDiv.querySelector(".imgPhoto");
-        const submitBtn = document.getElementById("btnSubmit");
+    <script src="~/js/imgPreviewer.js" defer></script>
+    <script>
+        /* Picture taking module */
 
-
-        inpFile.addEventListener("change", function () {
-            const file = this.files[0];
-
-            if (file) {
-
-                const reader = new FileReader();
-                photo.style.display = "block";
-
-                reader.addEventListener("load", function () {
-                    photo.setAttribute("src", this.result);
-                })
-
-                reader.readAsDataURL(file);
-            }
-
-        });
-    </script>
-
-    <script>const modal = document.getElementById("myModal");
-        const span = document.getElementsByClassName("close")[0];
         const btn = document.getElementById("takeApic");
         const cancelBtn = document.getElementById("cancelBtn");
-
         const imgData = document.getElementById("imgData");
+        const video = document.getElementById("vid");
+        const hidden_canvas = document.getElementById("c");
+        const photo = document.getElementById("photo");
 
-        /*bind the click event to the img element*/
+        const width = 1280; // 1280;
+        const height = 720; // 720;
+
+        const context = hidden_canvas.getContext("2d");
+
+        const picDiv = document.getElementById("picDiv");
+        const submitBtn = document.getElementById("btnSubmit");
+        const modal = document.getElementById("myModal");
+
+        let activeImage;
+
+        /* bind the click event to the img element */
+
         picDiv.addEventListener("click", (ev) => {
             ev.preventDefault();
 
@@ -128,11 +120,7 @@
             e.preventDefault();
             modal.style.display = "none";
         })
-
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-
+        
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -142,32 +130,21 @@
         var constraints = {
             audio: false,
             video: {
-                width: 650,
-                height: 400
+                width: 640,
+                height: 480
             }
         }
 
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-            document.getElementById("vid").srcObject = stream;
+            video.srcObject = stream;
+            video.play();  /*playing the video*/
+        }).catch(function (err) {
 
-            /*playing the video*/
-            document.getElementById("vid").play();
+
         })
-            .catch(function (err) {
-                /* handle the error */
-
-            })
 
         function takeSnapShot() {
-            /* function is responsible for taking a still photo */
-            const hidden_canvas = document.getElementById("c");
-            const video = document.getElementById("vid");
-            const photo = document.getElementById("photo");
 
-            const width = video.getAttribute("width");
-            const height = video.getAttribute("height");
-            const context = hidden_canvas.getContext("2d");
-            
             //setting the dimensions of the hidden canvas to the video element
             hidden_canvas.width = width;
             hidden_canvas.height = height;
@@ -177,21 +154,15 @@
             /* get an image dataURL from the canvas */
             const imageDataUrl = hidden_canvas.toDataURL("image/png");
 
-            /* resize image here */
-
-
             imgData.setAttribute("value", imageDataUrl);
 
-            //set the data URL as the source of the image
-            photo.setAttribute("src", "");
             photo.setAttribute("src", imageDataUrl);
         }
 
+        /* event binding */
         btn.addEventListener("click", () => {
             takeSnapShot();
-        });
-
-    </script>
+        });</script>
 
     <script type="text/javascript">$(document).ready(function () {
 
@@ -200,7 +171,7 @@
                 /* check if success is from response, is FALSE or not set */
 
                 if (res.data.error.success.toString() == "true") {
-                    
+
                     //console.log(res.data.error.toString());
                     alert(res.data.error.data.toString());
                 }
@@ -266,6 +237,7 @@
                 });
 
             });
+
 
         });</script>
 

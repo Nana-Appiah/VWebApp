@@ -79,6 +79,16 @@ namespace middleWare
             catch(Exception x)
             {
                 Debug.Print($"error: {x.Message}");
+                o = new data()
+                {
+                    error = new Response()
+                    {
+                        success = @"false",
+                        code = "04 - Intenal Server error",
+                        data = x.Message
+                    }
+                };
+
                 return o;
             }
         }
