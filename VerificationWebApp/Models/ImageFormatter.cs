@@ -74,9 +74,9 @@ namespace VerificationWebApp.Models
 
         public string trimBase64String()
         {
-            string regx = @"data:image/png;base64,";
+            string[] substrings = this.rawBase64String.Split(",");
+            return substrings[1];
 
-            return this.rawBase64String.Replace(regx, "").Trim();
         }
 
 	}

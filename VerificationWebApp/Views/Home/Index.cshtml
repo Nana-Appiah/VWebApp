@@ -82,7 +82,7 @@
             <br />
             <input type="submit" id="btnSubmit" value="Click to Verify">
         </div>
-
+        
     </form>
 
     <script src="~/js/imgPreviewer.js" defer></script>
@@ -96,8 +96,8 @@
         const hidden_canvas = document.getElementById("c");
         const photo = document.getElementById("photo");
 
-        const width = 1280; // 1280;
-        const height = 720; // 720;
+        const width = 640; /* 1280; */
+        const height = 480; // 720;
 
         const context = hidden_canvas.getContext("2d");
 
@@ -169,11 +169,12 @@
             function handleResponse(res) {
 
                 /* check if success is from response, is FALSE or not set */
+                console.log(res);
 
-                if (res.data.error.success.toString() == "true") {
+                if (res.status.toString() == "True") {
 
                     //console.log(res.data.error.toString());
-                    alert(res.data.error.data.toString());
+                    alert(res.data.success.toString());
                 }
                 else {
                     alert(res.data.error.data.toString());

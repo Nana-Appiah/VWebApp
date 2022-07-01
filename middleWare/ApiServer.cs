@@ -34,6 +34,8 @@ namespace middleWare
 
             try
             {
+                Response statusObj = null;
+
                 HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri(baseURI);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -44,8 +46,7 @@ namespace middleWare
                 HttpResponseMessage response =  client.PostAsync(baseURI, content).Result;
 
                 var ct = await response.Content.ReadAsStringAsync();
-                var errorObj = JsonConvert.DeserializeObject<Response>(ct);
-
+                
                 if (response.IsSuccessStatusCode)
                 {
                     var x = JObject.Parse(ct);
@@ -62,16 +63,16 @@ namespace middleWare
                     o.center = x["data"]["center"].ToString();
                     o.isException = x["data"]["isException"].ToString();
                     o.person = x["data"]["person"].ToObject<Person>();
-                    o.success = x["success"].ToString();
+                    o.success = String.Format("{0},{1} validated using Liveness test", o.person.surname, o.person.forenames);
                     o.code = x["code"].ToString();
                     o.msg = x["msg"].ToString();
 
-                    o.error = errorObj;
+                    o.error = statusObj;
                 }
                 else
                 {
                     o = new data() {
-                        error = errorObj
+                        error = JsonConvert.DeserializeObject<Response>(ct)
                     };
                 }
                 return o;
