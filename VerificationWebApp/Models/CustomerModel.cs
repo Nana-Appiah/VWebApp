@@ -30,6 +30,9 @@ namespace VerificationWebApp.Models
 
 		public string imgData { get; set; }
 
+		public string frontPicture { get; set; }
+		public string backPicture { get; set; }
+
 	}
 }
 

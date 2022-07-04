@@ -1,4 +1,8 @@
-﻿
+﻿<div style="display:none;" id="myDiv" class="animate-bottom">
+    <h2 class="title">Tada!</h2>
+    <p class="msg">Some text in my newly loaded page..</p>
+</div>
+
 <div class="container">
 
     <div class="container mt-5">
@@ -23,6 +27,8 @@
             </div>
         </div>
     </div>
+
+
 
     <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
 
@@ -73,21 +79,49 @@
             </div>
         </div>
 
+        <br />
+        <div class="row form-group">
+            <div class="col-md-6 col-100">
+                <label>Click on image below to upload front-facing part of National ID</label>
+            </div>
+            <div class="col-md-6 col-100">
+                <label>Click on image below to upload back-facing part of National ID</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 front-pic" style="border:1px solid green;">
+                <input type="file" name="fpic" id="fpic" accept="image/png" class="form-control" style="display:none;">
+                <img src="~/images/NationalCard-front.jpeg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive">
+            </div>
+            <div class="col-md-6 back-pic" style="border:1px solid green;">
+                <input type="file" name="bpic" id="bpic" accept="image/png" class="form-control" style="display:none;">
+                <img src="~/images/NationalCard-back.jpeg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive">
+            </div>
+        </div>
         <div class="row form-group">
             <br />
             <input type="text" id="imgData" name="customer.imgData" value="" hidden>
+        </div>
+        <div class="row form-group">
+            <br />
+            <input type="text" id="backPicture" name="customer.backPicture" value="" hidden>
+        </div>
+        <div class="row form-group">
+            <br />
+            <input type="text" id="frontPicture" name="customer.frontPicture" value="" hidden>
         </div>
         <br />
         <div class="row">
             <br />
             <input type="submit" id="btnSubmit" value="Click to Verify">
         </div>
-        
+
     </form>
 
     <script src="~/js/imgPreviewer.js" defer></script>
-    <script>
-        /* Picture taking module */
+    <script src="~/js/ghcard.js" defer></script>
+    <script>/* Picture taking module */
 
         const btn = document.getElementById("takeApic");
         const cancelBtn = document.getElementById("cancelBtn");
@@ -96,14 +130,16 @@
         const hidden_canvas = document.getElementById("c");
         const photo = document.getElementById("photo");
 
-        const width = 640; /* 1280; */
-        const height = 480; // 720;
+        const width = 640; 
+        const height = 480; 
 
         const context = hidden_canvas.getContext("2d");
 
         const picDiv = document.getElementById("picDiv");
         const submitBtn = document.getElementById("btnSubmit");
         const modal = document.getElementById("myModal");
+
+        const msgDialog = document.getElementById("msgDialog");
 
         let activeImage;
 
@@ -115,15 +151,31 @@
             modal.style.display = "block";
         });
 
+        function showMessage(title, msg) {
+            myVar = setTimeout(showPage(title,msg), 3000);
+        }
+
+        function showPage(title, msg) {
+
+            myDiv.querySelector(".title").textContent = title;
+            myDiv.querySelector(".msg").textContent = msg;
+
+            document.getElementById("loader").style.display = "none";
+            document.getElementById("myDiv").style.display = "block";
+        }
 
         cancelBtn.addEventListener("click", function (e) {
             e.preventDefault();
             modal.style.display = "none";
         })
-        
+
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
+            }
+
+            if (event.target == msgDialog) {
+                msgDialog.style.display = "none";
             }
         }
 
@@ -162,57 +214,45 @@
         /* event binding */
         btn.addEventListener("click", () => {
             takeSnapShot();
-        });</script>
+            cancelBtn.click();
+        });
+
+    </script>
 
     <script type="text/javascript">$(document).ready(function () {
 
             function handleResponse(res) {
-
-                /* check if success is from response, is FALSE or not set */
+            
                 console.log(res);
 
                 if (res.status.toString() == "True") {
-
-                    //console.log(res.data.error.toString());
-                    alert(res.data.success.toString());
+                    alert(res.data.success);
+                    //showMessage("Verification Status:" + res.status.toString(), res.data.success.toString());
                 }
-                else {
+                else
+                {
                     alert(res.data.error.data.toString());
-                    //showSuccessMessage();
                 }
             }
 
             function handleError(err) {
 
-                if (xhr.responseText)
+                if (xhr.responseText) 
                     showErrorMessage(xhr.responseText);
                 else
                     showErrorMessage("Error has occured. Please try again later.");
+                
             }
 
             function showErrorMessage(message) {
-
-                // show a popup logic or an alert logic
+            /* show a popup logic or an alert logic */
                 var popup = $('#errorAlert');
                 popup.removeClass('d-none');
                 $('body').removeClass('loading');
 
                 setTimeout(() => {
                     popup.addClass('d-none');
-                }, 5000);
-            }
-
-            function showSuccessMessage(message) {
-
-                // show a popup logic or an alert logic
-                var popup = $('#successAlert');
-                popup.text(message);
-                popup.removeClass('d-none');
-                $('body').removeClass('loading');
-
-                setTimeout(() => {
-                    popup.addClass('d-none');
-                }, 5000);
+                },5000);
             }
 
             /* submit event click */
@@ -225,6 +265,8 @@
                 var form = $('#verifyForm')[0];
                 var dt = new FormData(form);
                 dt.append("imgData", imgData);
+                dt.append("frontPicture", document.getElementById("frontPicture").getAttribute("value"));
+                dt.append("backPicture", document.getElementById("backPicture").getAttribute("value"));
 
                 $.ajax({
                     type: 'POST',
@@ -235,6 +277,7 @@
                     processData: false,
                     success: handleResponse,
                     error: handleError
+                    
                 });
 
             });
