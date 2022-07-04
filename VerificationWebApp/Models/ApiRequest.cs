@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Json.Net;
 
+using VerificationWebApp.DbData;
+using VerificationWebApp.DbModels;
 
 namespace VerificationWebApp.Models
 {
@@ -22,6 +24,9 @@ namespace VerificationWebApp.Models
 
 		public DbPayload databasePayLoad { get; set; } 
 		
+		public Verified oVerified { get; set; }
+
+
 		private const string merchant_key = @"e4a8745a-131b-4c05-a350-17fd992eba35";
 		private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
 		private string databaseURI =  @"http://localhost:8000/api/customer";
@@ -76,6 +81,26 @@ namespace VerificationWebApp.Models
             else
             {
 				return null;
+            }
+        }
+
+		public async Task<bool> SaveRecordAsync()
+        {
+            //method is used to save record asynchronously
+            try
+            {
+				using (var config = new IDVerificationTestContext())
+                {
+					config.Verifieds.Add(oVerified);
+					config.SaveChangesAsync();
+
+					return true;
+                }
+            }
+			catch(Exception x)
+            {
+				Debug.Print(x.Message);
+				return false;
             }
         }
 

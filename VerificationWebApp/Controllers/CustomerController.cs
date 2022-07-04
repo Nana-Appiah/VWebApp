@@ -12,6 +12,7 @@ using System.IO;
 using middleWare;
 using VerificationWebApp.Models;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using VerificationWebApp.DbModels;
 
 namespace VerificationWebApp.Controllers
 {
@@ -51,13 +52,36 @@ namespace VerificationWebApp.Controllers
                     try
                     {
                         blnStatus = dt.verified == @"TRUE" ? true : false;
+                        if (blnStatus)
+                        {
+                            //save record in the database
+                            var verifiedObj = new Verified() 
+                            {
+                                AcctNo = obj.accountNumber,
+                                NationalId = dt.person.nationalId,
+                                ShortCode = dt.shortGuid,
+                                Telephone = String.Empty
+                            };
+
+                            requestService.oVerified = verifiedObj;
+                            bool b = await requestService.SaveRecordAsync();
+
+                            if (await requestService.SaveRecordAsync())
+                            {
+                                return Json(new { status = true, data = string.Format("{0},{1} has been verified by Liveness test",dt.person.surname,dt.person.forenames) });
+                            }
+                            else
+                            {
+                                return Json(new { status = false, data = string.Format("Sorry, your account exists but you failed Liveness test") });
+                            }
+                        }
+                        else { return Json(new { status = false, data = string.Format("Sorry, you failed Liveness test") }); }
                     }
                     catch (Exception xx)
                     {
                         Debug.Print($"error: {xx.Message}");
+                        return Json(new { status = false, error = $"error: {xx.Message}" });
                     }
-
-                    return Json(new { status = blnStatus.ToString(), data = dt });
                 }
                 else { return Json(new { status = false, data = $"account Number does not exist in the banking database" }); }
             }
