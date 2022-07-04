@@ -22,6 +22,7 @@ namespace middleWare
 	{
 		private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
 
+        private string databaseURI = @"http://localhost:8000/api/customer";
 		public ApiServer()
 		{
 		}
@@ -91,6 +92,36 @@ namespace middleWare
                 };
 
                 return o;
+            }
+        }
+
+        public async Task<string> GetDatabaseRecordAsync(DbPayload dbPayload)
+        {
+            string strResponse = string.Empty;
+
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(databaseURI);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                var stringPayLoad = JsonConvert.SerializeObject(dbPayload);
+                var content = new StringContent(stringPayLoad, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = client.PostAsync(databaseURI, content).Result;
+
+                strResponse = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return strResponse;
+                }
+                else { return String.Empty; }
+            }
+            catch(Exception x)
+            {
+                Debug.Print($"error: {x.Message}");
+                return strResponse;
             }
         }
 

@@ -20,35 +20,46 @@ namespace VerificationWebApp.Controllers
         [HttpPost]
         public async  Task<IActionResult> VerifyID(CustomerModel customer)
         {
-            
             try
             {
-                //convert the image to png
-                bool blnStatus = false;
-
-                //convert file
-                var objPayLoad = new PayLoad() {
-                    pinNumber = customer.ghCardNo.Trim(),
-                    image = new ImageFormatter() { rawBase64String = customer.imgData }.trimBase64String(),
-                    dataType = @"PNG",
-                    center = @"BRANCHLESS",
-                    merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
+                //check for database record existing before doing liveness test
+                var dbData = new DbPayload() {
+                    accountNumber = customer.actNo.Trim(),
+                    customerNumber = String.Empty
                 };
 
-                var api = new ApiServer();
-                var dt = await api.ApiRequestDataAsync(objPayLoad);
+                var requestService = new ApiRequest() { databasePayLoad = dbData };
+                var obj = await requestService.GetDatabaseRecordAsync();
 
-                try
+                if (obj != null)
                 {
-                    blnStatus = dt.verified == @"TRUE" ? true : false;
-                }
-                catch (Exception xx)
-                {
-                    Debug.Print($"error: {xx.Message}");
-                }
+                    bool blnStatus = false;
 
-                return Json(new { status = blnStatus.ToString(), data = dt });
-                
+                    //convert file
+                    var objPayLoad = new PayLoad()
+                    {
+                        pinNumber = customer.ghCardNo.Trim(),
+                        image = new ImageFormatter() { rawBase64String = customer.imgData }.trimBase64String(),
+                        dataType = @"PNG",
+                        center = @"BRANCHLESS",
+                        merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
+                    };
+
+                    var api = new ApiServer();
+                    var dt = await api.ApiRequestDataAsync(objPayLoad);
+
+                    try
+                    {
+                        blnStatus = dt.verified == @"TRUE" ? true : false;
+                    }
+                    catch (Exception xx)
+                    {
+                        Debug.Print($"error: {xx.Message}");
+                    }
+
+                    return Json(new { status = blnStatus.ToString(), data = dt });
+                }
+                else { return Json(new { status = false, data = $"account Number does not exist in the banking database" }); }
             }
             catch(Exception x)
             {
