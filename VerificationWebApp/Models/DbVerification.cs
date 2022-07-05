@@ -26,6 +26,8 @@ namespace VerificationWebApp.Models
         public string description { get; set; }
         public string additionalData { get; set; }
 
+        public string verificationStatus { get; set; }
+        
         #endregion
 
 

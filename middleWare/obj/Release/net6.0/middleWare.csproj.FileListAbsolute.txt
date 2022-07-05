@@ -1,0 +1,12 @@
+C:\Users\aonana\Desktop\vweb\middleWare\bin\Release\net6.0\middleWare.deps.json
+C:\Users\aonana\Desktop\vweb\middleWare\bin\Release\net6.0\middleWare.dll
+C:\Users\aonana\Desktop\vweb\middleWare\bin\Release\net6.0\middleWare.pdb
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.csproj.AssemblyReference.cache
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.AssemblyInfoInputs.cache
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.AssemblyInfo.cs
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.csproj.CoreCompileInputs.cache
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.dll
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\refint\middleWare.dll
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\middleWare.pdb
+C:\Users\aonana\Desktop\vweb\middleWare\obj\Release\net6.0\ref\middleWare.dll

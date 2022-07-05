@@ -30,7 +30,7 @@ namespace VerificationWebApp.Controllers
                 };
 
                 var requestService = new ApiRequest() { databasePayLoad = dbData };
-                var obj = await requestService.GetDatabaseRecordAsync();
+                var obj = await requestService.GetDatabaseRecordAsync(customer.TelNo);
 
                 if (obj != null)
                 {
@@ -52,23 +52,24 @@ namespace VerificationWebApp.Controllers
                     try
                     {
                         blnStatus = dt.verified == @"TRUE" ? true : false;
+
                         if (blnStatus)
                         {
                             //save record in the database
-                            var verifiedObj = new Verified() 
+                            var verifiedObj = new Verified()
                             {
                                 AcctNo = obj.accountNumber,
                                 NationalId = dt.person.nationalId,
                                 ShortCode = dt.shortGuid,
-                                Telephone = String.Empty,
-                                frontPicture = customer.frontPicture,
-                                backPicture = customer.backPicture
+                                Telephone = customer.TelNo,
+                                frontPicture = new ImageFormatter() { rawBase64String = customer.frontPicture }.trimBase64String(),
+                                backPicture = new ImageFormatter() { rawBase64String = customer.backPicture }.trimBase64String()
                             };
 
                             requestService.oVerified = verifiedObj;
                             bool b = await requestService.SaveRecordAsync();
 
-                            if (await requestService.SaveRecordAsync())
+                            if (b)
                             {
                                 return Json(new { status = true, data = string.Format("{0},{1} has been verified by Liveness test",dt.person.surname,dt.person.forenames) });
                             }
@@ -82,14 +83,14 @@ namespace VerificationWebApp.Controllers
                     catch (Exception xx)
                     {
                         Debug.Print($"error: {xx.Message}");
-                        return Json(new { status = false, error = $"error: {xx.Message}" });
+                        return Json(new { status = false, data = $"error: {xx.Message}" });
                     }
                 }
                 else { return Json(new { status = false, data = $"account Number does not exist in the banking database" }); }
             }
             catch(Exception x)
             {
-                return Json(new { status = false, error = $"error: {x.Message}" });
+                return Json(new { status = false, data = $"error: {x.Message}" });
             }
         }
     }

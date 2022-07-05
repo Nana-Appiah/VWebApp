@@ -49,7 +49,7 @@ namespace VerificationWebApp.Models
             }
         }
 
-		public async Task<DbVerification> GetDatabaseRecordAsync()
+		public async Task<DbVerification> GetDatabaseRecordAsync(string mobileNo)
         {
 			var api = new ApiServer();
 			var returnString = await api.GetDatabaseRecordAsync(databasePayLoad);
@@ -66,7 +66,7 @@ namespace VerificationWebApp.Models
 				db.customerNumber = x["customerNumber"].ToString();
 				db.accountNumber = x["accountNumber"].ToString();
 				db.fullName = x["fullName"].ToString();
-				db.dateOfBirth = x["dateOfBirth"].ToString();
+				db.dateOfBirth = await formatDoB(x["dateOfBirth"].ToString().Split('/'));
 				db.documentType = x["documentType"].ToString();
 				db.documentNumber = x["documentNumber"].ToString();
 				db.gender = x["gender"].ToString();
@@ -76,6 +76,9 @@ namespace VerificationWebApp.Models
 				db.description = x["description"].ToString();
 				db.additionalData = x["additionalData"].ToString();
 
+				
+				db.verificationStatus = await doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
+
 				return db;
 			}
             else
@@ -83,6 +86,29 @@ namespace VerificationWebApp.Models
 				return null;
             }
         }
+
+		private async Task<string> doesMobileExist(string telFromPage, string[] telsOnFile)
+        {
+			//telFromPage: the telephone number provided by the customer using the web page
+			//telsOnFile: the list of telephone numbers on file in the core-banking system
+			string s = @"Telephone number NOT found on file";
+
+			foreach(var t in telsOnFile)
+            {
+				if (telFromPage.Contains(t))
+                {
+					return s = @"Telephone number found on file";
+				}
+            }
+
+			return s;
+        }
+
+		private async Task<string> formatDoB(string[] parts)
+        {
+			return string.Format("{0}-{1}-{2}", parts[2], parts[0], parts[1]);
+        }
+		
 
 		public async Task<bool> SaveRecordAsync()
         {
@@ -92,7 +118,7 @@ namespace VerificationWebApp.Models
 				using (var config = new IDVerificationTestContext())
                 {
 					config.Verifieds.Add(oVerified);
-					config.SaveChangesAsync();
+					await config.SaveChangesAsync();
 
 					return true;
                 }
