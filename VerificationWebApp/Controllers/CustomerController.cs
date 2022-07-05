@@ -60,7 +60,9 @@ namespace VerificationWebApp.Controllers
                                 AcctNo = obj.accountNumber,
                                 NationalId = dt.person.nationalId,
                                 ShortCode = dt.shortGuid,
-                                Telephone = String.Empty
+                                Telephone = String.Empty,
+                                frontPicture = customer.frontPicture,
+                                backPicture = customer.backPicture
                             };
 
                             requestService.oVerified = verifiedObj;

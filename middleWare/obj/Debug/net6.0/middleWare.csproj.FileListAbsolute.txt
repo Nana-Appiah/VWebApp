@@ -10,15 +10,3 @@
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/refint/middleWare.dll
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.pdb
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/ref/middleWare.dll
-C:\Users\aonana\Desktop\vweb\middleWare\bin\Debug\net6.0\middleWare.deps.json
-C:\Users\aonana\Desktop\vweb\middleWare\bin\Debug\net6.0\middleWare.dll
-C:\Users\aonana\Desktop\vweb\middleWare\bin\Debug\net6.0\middleWare.pdb
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.csproj.AssemblyReference.cache
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.AssemblyInfoInputs.cache
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.AssemblyInfo.cs
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.csproj.CoreCompileInputs.cache
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.dll
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\refint\middleWare.dll
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\middleWare.pdb
-C:\Users\aonana\Desktop\vweb\middleWare\obj\Debug\net6.0\ref\middleWare.dll

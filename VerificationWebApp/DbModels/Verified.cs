@@ -39,5 +39,9 @@ namespace VerificationWebApp.DbModels
         [StringLength(50)]
         [Unicode(false)]
         public string Telephone { get; set; }
+
+        public string frontPicture { get; set; }
+
+        public string backPicture { get; set; }
     }
 }
