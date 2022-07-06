@@ -90,12 +90,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 front-pic" style="border:1px solid green;">
-                <input type="file" name="fpic" id="fpic" accept="image/png" class="form-control" style="display:none;">
+            <div class="col-md-6 front-pic">
+                <input type="file" name="fpic" id="fpic" accept="image/*" class="form-control" style="display:none;">
                 <img src="~/images/NationalCard-front.jpeg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive">
             </div>
-            <div class="col-md-6 back-pic" style="border:1px solid green;">
-                <input type="file" name="bpic" id="bpic" accept="image/png" class="form-control" style="display:none;">
+            <div class="col-md-6 back-pic">
+                <input type="file" name="bpic" id="bpic" accept="image/*" class="form-control" style="display:none;">
                 <img src="~/images/NationalCard-back.jpeg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive">
             </div>
         </div>
@@ -225,13 +225,12 @@
             
                 console.log(res);
 
-                if (res.status.toString() == "True") {
-                    alert(res.data.success);
-                    //showMessage("Verification Status:" + res.status.toString(), res.data.success.toString());
+                if (res.status.toString() == "true") {
+                    alert(res.data.toString());
                 }
                 else
                 {
-                    alert(res.data.error.data.toString());
+                    alert(res.data.toString());
                 }
             }
 
