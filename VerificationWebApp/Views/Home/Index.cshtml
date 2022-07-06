@@ -1,51 +1,46 @@
-﻿<div style="display:none;" id="myDiv" class="animate-bottom">
-    <h2 class="title">Tada!</h2>
-    <p class="msg">Some text in my newly loaded page..</p>
-</div>
-
-<div class="container">
-
-    <div class="container mt-5">
-        <div class="modal modal-lg" id="myModal" tabindex="-1">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Snap a Picture</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <video id="vid" class="form-control" autoplay></video>
-                        <canvas id="c" style="display:none;"></canvas>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" id="cancelBtn" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="takeApic">Take a Pic</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
+﻿<div class="container">
 
 
     <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
 
-        <div class="container">
-            <div class="parent">
-                <div>
-                    <div class="profile-pic-div form-group" id="picDiv">
-                        <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
-                        <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
+        <div class="container mt-5" style="display:flex;justify-content:center;">
+            <div class="modal modal-lg" id="myModal" tabindex="-1" style="display:none;">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Snap a Picture</h5>
+                            <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                        </div>
+                        <div class="modal-body">
+                            <video id="vid" class="form-control" autoplay></video>
+                            <canvas id="c" style="display:none;"></canvas>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="cancelBtn" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="takeApic">Take a Pic</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
+
+        <!--<div class="container">-->
+        <div class="parent mt-5">
+            <div>
+                <div class="profile-pic-div form-group mt-5" id="picDiv" style="display:flex;justify-content:center;">
+                    <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
+                    <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
+                </div>
+            </div>
+        </div>
+        <!--</div>-->
+
         <div class="row form-group">
             <div class="col-100">
-                <label for="actNo">Enter Acc No.</label>
+                <label for="actNo">Enter Acc Number</label>
             </div>
             <div class="col-100">
                 <input type="text" id="actNo" name="customer.actNo" placeholder="Enter your account number here..." class="form-control">
@@ -54,7 +49,7 @@
 
         <div class="row form-group">
             <div class="col-100">
-                <label for="ghCardNo">Ghana Card No (eg: GHA-xxxxxxxxx-x)</label>
+                <label for="ghCardNo">Ghana Card Number (eg: GHA-xxxxxxxxx-x)</label>
             </div>
             <div class="col-100">
                 <input type="text" id="ghCardNo" name="customer.ghCardNo" placeholder="Your Ghana card number goes here..." class="form-control">
@@ -63,7 +58,7 @@
 
         <div class="row form-group">
             <div class="col-100">
-                <label for="TelNo">Telephone No (eg:024xxxxxxx)</label>
+                <label for="TelNo">Telephone Number (eg:024xxxxxxx)</label>
             </div>
             <div class="col-100">
                 <input type="text" id="TelNo" name="customer.TelNo" placeholder="Enter telephone number on file..." class="form-control">
@@ -119,6 +114,8 @@
 
     </form>
 
+    <div class="loader"></div>
+
     <script src="~/js/imgPreviewer.js" defer></script>
     <script src="~/js/ghcard.js" defer></script>
     <script>/* Picture taking module */
@@ -130,8 +127,8 @@
         const hidden_canvas = document.getElementById("c");
         const photo = document.getElementById("photo");
 
-        const width = 640; 
-        const height = 480; 
+        const width = 640;
+        const height = 480;
 
         const context = hidden_canvas.getContext("2d");
 
@@ -152,16 +149,7 @@
         });
 
         function showMessage(title, msg) {
-            myVar = setTimeout(showPage(title,msg), 3000);
-        }
-
-        function showPage(title, msg) {
-
-            myDiv.querySelector(".title").textContent = title;
-            myDiv.querySelector(".msg").textContent = msg;
-
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("myDiv").style.display = "block";
+            myVar = setTimeout(showPage(title, msg), 3000);
         }
 
         cancelBtn.addEventListener("click", function (e) {
@@ -215,43 +203,48 @@
         btn.addEventListener("click", () => {
             takeSnapShot();
             cancelBtn.click();
-        });
+        });</script>
 
-    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-    <script type="text/javascript">$(document).ready(function () {
+            $body = $("body");
+
+            $(document).on({
+                ajaxStart: function () { $body.addClass("loading"); },
+                ajaxStop: function () { $body.removeClass("loading"); }
+            });
 
             function handleResponse(res) {
-            
+
                 console.log(res);
 
                 if (res.status.toString() == "true") {
                     alert(res.data.toString());
                 }
-                else
-                {
+                else {
                     alert(res.data.toString());
                 }
             }
 
             function handleError(err) {
 
-                if (xhr.responseText) 
+                if (xhr.responseText)
                     showErrorMessage(xhr.responseText);
                 else
                     showErrorMessage("Error has occured. Please try again later.");
-                
+
             }
 
             function showErrorMessage(message) {
-            /* show a popup logic or an alert logic */
+                /* show a popup logic or an alert logic */
                 var popup = $('#errorAlert');
                 popup.removeClass('d-none');
                 $('body').removeClass('loading');
 
                 setTimeout(() => {
                     popup.addClass('d-none');
-                },5000);
+                }, 5000);
             }
 
             /* submit event click */
@@ -276,7 +269,7 @@
                     processData: false,
                     success: handleResponse,
                     error: handleError
-                    
+
                 });
 
             });
