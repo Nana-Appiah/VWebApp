@@ -26,18 +26,15 @@
             </div>
         </div>
 
-
-        <!--<div class="container">-->
-        <div class="parent mt-5">
-            <div style="display:flex;justify-content:center;align-items:center;position:absolute;">
-                <div class="profile-pic-div form-group mt-5" id="picDiv" style="display:flex;justify-content:center;">
-                    <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
-                    <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
-                </div>
+        <div class="mt-5 parent">
+        <div class="mt-5" style="border:1px solid yellow;">
+            <div class="profile-pic-div mt-5" id="picDiv">
+                <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
+                <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
             </div>
         </div>
-        <!--</div>-->
-
+        </div>
+        
         <div class="row form-group">
             <div class="col-100">
                 <label for="actNo">Enter Account Number</label>
@@ -138,7 +135,11 @@
 
         const msgDialog = document.getElementById("msgDialog");
 
+        const cameraBtn = document.getElementById("uploadBtn");
+
         let activeImage;
+
+        let cameraStream;
 
         /* bind the click event to the img element */
 
@@ -175,13 +176,27 @@
             }
         }
 
+        /* camera button click */
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-            video.srcObject = stream;
-            video.play();  /*playing the video*/
+            cameraStream = stream;
+            video.srcObject = cameraStream;
+
+            /*playing the video*/
+            video.play();
         }).catch(function (err) {
-
-
+            /* catch error here */
         })
+
+        
+        function turnCameraOff(stream) {
+            stream.getTracks().forEach(function (track) {
+                if (track.readyState == 'live' && track.kind === 'video') {
+                    track.stop();
+                }
+            });
+
+            stream = null;
+        }
 
         function takeSnapShot() {
 
@@ -197,6 +212,9 @@
             imgData.setAttribute("value", imageDataUrl);
 
             photo.setAttribute("src", imageDataUrl);
+
+            /* close the camera */
+            turnCameraOff(cameraStream);
         }
 
         /* event binding */
