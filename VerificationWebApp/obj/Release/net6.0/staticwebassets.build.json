@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O1ef8IS9I14/L9KghkTmuGG7RRBo8vLk9VOF1cXcFo8=",
+  "Hash": "YowunCRuccIh+7l6W17h+2Rp7KM91AjmZzfeEygsQ+Q=",
   "Source": "VerificationWebApp",
   "BasePath": "_content/VerificationWebApp",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\form_css.css"
+    },
+    {
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\css\\loader.css",
+      "SourceId": "VerificationWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
+      "BasePath": "_content/VerificationWebApp",
+      "RelativePath": "css/loader.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\loader.css"
     },
     {
       "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\css\\modal_css.css",
@@ -238,6 +255,23 @@
       "OriginalItemSpec": "wwwroot\\images\\silhouette.jpeg"
     },
     {
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\ZZ5H.gif",
+      "SourceId": "VerificationWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
+      "BasePath": "_content/VerificationWebApp",
+      "RelativePath": "images/ZZ5H.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\ZZ5H.gif"
+    },
+    {
       "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\js\\ghcard.js",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
@@ -270,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\imgPreviewer.js"
+    },
+    {
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\js\\jq.js",
+      "SourceId": "VerificationWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
+      "BasePath": "_content/VerificationWebApp",
+      "RelativePath": "js/jq.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jq.js"
     },
     {
       "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\js\\jquery.validate.min.js",
