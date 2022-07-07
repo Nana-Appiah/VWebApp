@@ -110,18 +110,6 @@ img {
     color:#222;
 }
 
-.profile-pic-div {
-    height: 300px;
-    width: 300px;
-    position: relative;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    border-radius: 2%;
-    overflow: hidden;
-    border: 1px solid grey;
-}
-
 #photo {
     height:100%;
     width:100%;
@@ -147,12 +135,32 @@ img {
     
 }
 
+.profile-pic-div {
+    height: 300px;
+    width: 300px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .parent {
     position: relative;
     height: 400px;
-    width: 1200px;
+    width: 600px;
     padding: 20px;
-    margin: 10px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 2%;
+    overflow: hidden;
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin:15px;
     /* centering child div */
     display: flex;
     justify-content: center;
@@ -161,8 +169,12 @@ img {
 }
 
 .parent .child {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
     /* border: 1px solid green; */
 }
 
