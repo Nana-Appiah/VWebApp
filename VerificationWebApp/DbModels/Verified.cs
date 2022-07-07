@@ -43,5 +43,7 @@ namespace VerificationWebApp.DbModels
         public string frontPicture { get; set; }
 
         public string backPicture { get; set; }
+
+        public string rawData { get; set; }
     }
 }

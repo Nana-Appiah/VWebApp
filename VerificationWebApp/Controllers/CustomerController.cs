@@ -11,6 +11,9 @@ using System.IO;
 
 using middleWare;
 using VerificationWebApp.Models;
+using System.Text;
+using System.Text.Json;
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 using VerificationWebApp.DbModels;
 
@@ -63,7 +66,8 @@ namespace VerificationWebApp.Controllers
                                 ShortCode = dt.shortGuid,
                                 Telephone = customer.TelNo,
                                 frontPicture = new ImageFormatter() { rawBase64String = customer.frontPicture }.trimBase64String(),
-                                backPicture = new ImageFormatter() { rawBase64String = customer.backPicture }.trimBase64String()
+                                backPicture = new ImageFormatter() { rawBase64String = customer.backPicture }.trimBase64String(),
+                                rawData = JsonSerializer.Serialize(dt)
                             };
 
                             requestService.oVerified = verifiedObj;

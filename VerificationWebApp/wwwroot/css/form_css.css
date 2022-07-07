@@ -91,6 +91,18 @@ img {
     height:200px;
 }
 
+.photoSource {
+    content: url("../images/silhouette.jpeg")
+}
+
+.idBack{
+    content: url("../images/NationalCard-back.jpeg")
+}
+
+.idFront{
+    content:url("../images/NationalCard-front.jpeg")
+}
+
 .container>h3 {
     font-family: sans-serif;
     text-align:center;

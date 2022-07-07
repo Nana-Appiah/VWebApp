@@ -91,6 +91,18 @@ img {
     height:200px;
 }
 
+.photoSource {
+    content: url("../images/silhouette.jpeg")
+}
+
+.idBack{
+    content: url("../images/NationalCard-back.jpeg")
+}
+
+.idFront{
+    content:url("../images/NationalCard-front.jpeg")
+}
+
 .container>h3 {
     font-family: sans-serif;
     text-align:center;
@@ -98,17 +110,16 @@ img {
     color:#222;
 }
 
-.container .profile-pic-div {
+.profile-pic-div {
     height: 300px;
     width: 300px;
     position: relative;
     top: 50%;
-    left: 50%;
+    left:50%;
     transform: translate(-50%,-50%);
     border-radius: 2%;
     overflow: hidden;
     border: 1px solid grey;
-
 }
 
 #photo {
