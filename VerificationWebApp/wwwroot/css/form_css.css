@@ -159,6 +159,8 @@ img {
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;
+    
+    border: none;
 
     margin:15px;
     /* centering child div */
