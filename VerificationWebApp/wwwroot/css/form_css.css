@@ -98,17 +98,16 @@ img {
     color:#222;
 }
 
-.container .profile-pic-div {
+.profile-pic-div {
     height: 300px;
     width: 300px;
     position: relative;
     top: 50%;
-    left: 50%;
+    left:50%;
     transform: translate(-50%,-50%);
     border-radius: 2%;
     overflow: hidden;
     border: 1px solid grey;
-
 }
 
 #photo {
