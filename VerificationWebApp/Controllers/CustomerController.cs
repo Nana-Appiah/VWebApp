@@ -54,7 +54,7 @@ namespace VerificationWebApp.Controllers
                     };
 
                     var api = new ApiServer() {
-                        imsGhAPI = ConfigObject.KONNECT,
+                        imsGhAPI = ConfigObject.NIA_API,
                         flexcubeAPI = ConfigObject.API
                     };
 

@@ -181,7 +181,7 @@
         /* camera button click */
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
             cameraStream = stream;
-            video.srcObject = cameraStream;
+            video.srcObject = stream;
 
             /*playing the video*/
             video.play();
@@ -216,7 +216,7 @@
             photo.setAttribute("src", imageDataUrl);
 
             /* close the camera */
-            turnCameraOff(cameraStream);
+            /* turnCameraOff(cameraStream); */
         }
 
         /* event binding */

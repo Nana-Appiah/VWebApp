@@ -14,6 +14,7 @@ builder.Services.AddDbContext<VerificationWebApp.DbData.IDVerificationTestContex
 
 ConfigObject.KONNECT = settings.connection;
 ConfigObject.API = settings.apiUrl;
+ConfigObject.NIA_API = settings.imsghAPI;
 
 /* user configuration starts here */
 
