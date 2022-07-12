@@ -53,7 +53,8 @@ namespace VerificationWebApp.Controllers
                         merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
                     };
 
-                    var api = new ApiServer() {
+                    var api = new ApiServer() 
+                    {
                         imsGhAPI = ConfigObject.NIA_API,
                         flexcubeAPI = ConfigObject.API
                     };
@@ -70,6 +71,7 @@ namespace VerificationWebApp.Controllers
                             var verifiedObj = new Verified()
                             {
                                 AcctNo = obj.accountNumber,
+                                AcctName = customer.actName,
                                 NationalId = dt.person.nationalId,
                                 ShortCode = dt.shortGuid,
                                 Telephone = customer.TelNo,

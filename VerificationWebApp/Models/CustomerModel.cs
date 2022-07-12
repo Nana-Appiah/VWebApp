@@ -14,6 +14,7 @@ namespace VerificationWebApp.Models
 		//[StringLength(12)]
 		public string actNo { get; set; }
 
+		public string actName { get; set; }
 		//[Required]
 		//[StringLength(15)]
 		public string ghCardNo { get; set; }
