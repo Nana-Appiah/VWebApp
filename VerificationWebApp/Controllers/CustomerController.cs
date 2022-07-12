@@ -32,7 +32,11 @@ namespace VerificationWebApp.Controllers
                     customerNumber = String.Empty
                 };
 
-                var requestService = new ApiRequest() { databasePayLoad = dbData };
+                var requestService = new ApiRequest() {
+                    databaseURI = ConfigObject.API,
+                    databasePayLoad = dbData
+                };
+
                 var obj = await requestService.GetDatabaseRecordAsync(customer.TelNo);
 
                 if (obj != null)
@@ -49,7 +53,11 @@ namespace VerificationWebApp.Controllers
                         merchantKey = @"e4a8745a-131b-4c05-a350-17fd992eba35"
                     };
 
-                    var api = new ApiServer();
+                    var api = new ApiServer() {
+                        imsGhAPI = ConfigObject.KONNECT,
+                        flexcubeAPI = ConfigObject.API
+                    };
+
                     var dt = await api.ApiRequestDataAsync(objPayLoad);
 
                     try

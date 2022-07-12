@@ -72,25 +72,26 @@
         </div>
 
         <br />
-        <div class="row form-group">
-            <div class="col-md-6 col-100">
+        <div class="row flex-container">
+            <div class="flex-child">
                 <label>Click on image below to upload front-facing part of National ID</label>
             </div>
-            <div class="col-md-6 col-100">
+            <div class="flex-child">
                 <label>Click on image below to upload back-facing part of National ID</label>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6 front-pic">
+        <div class="flex-container">
+            <div class="flex-child front-pic">
                 <input type="file" name="fpic" id="fpic" accept="image/*" class="form-control" style="display:none;">
                 <img src="~/images/NationalCard-front.jpeg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive">
             </div>
-            <div class="col-md-6 back-pic">
+            <div class="flex-child back-pic">
                 <input type="file" name="bpic" id="bpic" accept="image/*" class="form-control" style="display:none;">
                 <img src="~/images/NationalCard-back.jpeg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive">
             </div>
         </div>
+
         <div class="row form-group">
             <br />
             <input type="text" id="imgData" name="customer.imgData" value="" hidden>
@@ -103,6 +104,7 @@
             <br />
             <input type="text" id="frontPicture" name="customer.frontPicture" value="" hidden>
         </div>
+
         <br />
         <div class="row">
             <br />

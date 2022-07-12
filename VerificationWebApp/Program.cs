@@ -1,4 +1,21 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using VerificationWebApp.Models;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+/* configuration object...newly added */
+var settings = builder.Configuration.GetSection("Settings").Get<Settings>();
+
+builder.Services.AddDbContext<VerificationWebApp.DbData.IDVerificationTestContext>(options =>
+{
+    options.UseSqlServer(settings.connection);
+});
+
+ConfigObject.KONNECT = settings.connection;
+ConfigObject.API = settings.apiUrl;
+
+/* user configuration starts here */
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

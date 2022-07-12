@@ -28,8 +28,11 @@ namespace VerificationWebApp.Models
 
 
 		private const string merchant_key = @"e4a8745a-131b-4c05-a350-17fd992eba35";
-		private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
-		private string databaseURI =  @"http://localhost:8000/api/customer";
+
+		//private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
+		//private string databaseURI =  @"http://localhost:8000/api/customer";
+
+		public string databaseURI { get; set; }
 
 		public async Task<data> GetBiometricData()
         {
@@ -52,7 +55,7 @@ namespace VerificationWebApp.Models
 		public async Task<DbVerification> GetDatabaseRecordAsync(string mobileNo)
         {
 			var api = new ApiServer();
-			var returnString = await api.GetDatabaseRecordAsync(databasePayLoad);
+			var returnString = await api.GetDatabaseRecordAsync(databasePayLoad,databaseURI);
 
 			if (returnString.Length > 0)
             {

@@ -20,9 +20,13 @@ namespace middleWare
 {
 	public class ApiServer
 	{
-		private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
+		//public string imsGhAPI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
 
-        private string databaseURI = @"http://localhost:8000/api/customer";
+        //public string flexcubeAPI = @"http://localhost:8000/api/customer";
+
+        public string imsGhAPI { get; set; }
+        public string flexcubeAPI { get; set; }
+
 		public ApiServer()
 		{
 		}
@@ -38,13 +42,13 @@ namespace middleWare
                 Response statusObj = null;
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(baseURI);
+                client.BaseAddress = new Uri(imsGhAPI);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var stringPayLoad = JsonConvert.SerializeObject(payLoad);
                 var content = new StringContent(stringPayLoad, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response =  client.PostAsync(baseURI, content).Result;
+                HttpResponseMessage response =  client.PostAsync(imsGhAPI, content).Result;
 
                 var ct = await response.Content.ReadAsStringAsync();
                 
@@ -95,20 +99,20 @@ namespace middleWare
             }
         }
 
-        public async Task<string> GetDatabaseRecordAsync(DbPayload dbPayload)
+        public async Task<string> GetDatabaseRecordAsync(DbPayload dbPayload, string fcubeAPI)
         {
             string strResponse = string.Empty;
 
             try
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(databaseURI);
+                client.BaseAddress = new Uri(fcubeAPI);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var stringPayLoad = JsonConvert.SerializeObject(dbPayload);
                 var content = new StringContent(stringPayLoad, Encoding.UTF8, "application/json");
 
-                HttpResponseMessage response = client.PostAsync(databaseURI, content).Result;
+                HttpResponseMessage response = client.PostAsync(flexcubeAPI, content).Result;
 
                 strResponse = await response.Content.ReadAsStringAsync();
 

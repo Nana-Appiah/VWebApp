@@ -27,3 +27,19 @@ body.loading .loader {
 body.loading .loader {
     display: block;
 }
+
+
+
+/* additional CSS flex rules */
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    padding: 10px;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
+}
