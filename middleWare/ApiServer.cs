@@ -48,6 +48,46 @@ namespace middleWare
                 var stringPayLoad = JsonConvert.SerializeObject(payLoad);
                 var content = new StringContent(stringPayLoad, Encoding.UTF8, "application/json");
 
+
+                using(HttpResponseMessage response = await client.PostAsync(imsGhAPI, content))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var ct = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var x = JObject.Parse(ct);
+                        var dt = JsonConvert.DeserializeObject<data>(ct);
+
+
+                        o = new data();
+
+                        o.transactionGuid = x["data"]["transactionGuid"].ToString();
+                        o.shortGuid = x["data"]["shortGuid"].ToString();
+                        o.requestTimestamp = x["data"]["requestTimestamp"].ToString();
+                        o.responseTimestamp = x["data"]["responseTimestamp"].ToString();
+                        o.verified = x["data"]["verified"].ToString();
+                        o.center = x["data"]["center"].ToString();
+                        o.isException = x["data"]["isException"].ToString();
+                        o.person = x["data"]["person"].ToObject<Person>();
+                        o.success = String.Format("{0},{1} validated using Liveness test", o.person.surname, o.person.forenames);
+                        o.code = x["code"].ToString();
+                        o.msg = x["msg"].ToString();
+
+                        o.error = statusObj;
+                    }
+                    else
+                    {
+                        o = new data()
+                        {
+                            error = JsonConvert.DeserializeObject<Response>(ct)
+                        };
+                    }
+
+                    return o;
+                }
+
+                /*
                 HttpResponseMessage response =  client.PostAsync(imsGhAPI, content).Result;
 
                 var ct = await response.Content.ReadAsStringAsync();
@@ -57,7 +97,7 @@ namespace middleWare
                     var x = JObject.Parse(ct);
                     var dt = JsonConvert.DeserializeObject<data>(ct);
 
-                    /* format data and send response of request to client */
+                   
                     o = new data();
 
                     o.transactionGuid = x["data"]["transactionGuid"].ToString();
@@ -81,6 +121,9 @@ namespace middleWare
                     };
                 }
                 return o;
+
+            */
+
             }
             catch(Exception x)
             {
