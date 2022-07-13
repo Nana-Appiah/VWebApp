@@ -7,10 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 /* configuration object...newly added */
 var settings = builder.Configuration.GetSection("Settings").Get<Settings>();
 
-builder.Services.AddDbContext<VerificationWebApp.DbData.IDVerificationTestContext>(options =>
-{
-    options.UseSqlServer(settings.connection);
-});
+//builder.Services.AddDbContext<VerificationWebApp.DbData.IDVerificationTestContext>(options =>
+//{
+//    options.UseSqlServer(settings.connection);
+//});
 
 ConfigObject.KONNECT = settings.connection;
 ConfigObject.API = settings.apiUrl;
