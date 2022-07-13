@@ -37,6 +37,9 @@ namespace VerificationWebApp.Controllers
                     databasePayLoad = dbData
                 };
 
+                //check to see if the user has alread been verified
+
+
                 var obj = await requestService.GetDatabaseRecordAsync(customer.TelNo);
 
                 if (obj != null)

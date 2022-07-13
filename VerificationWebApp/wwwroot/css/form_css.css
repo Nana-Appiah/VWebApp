@@ -87,8 +87,16 @@ input[type=submit] {
     color:green;
 }
 
+/*
 img {
     height:200px;
+}
+*/
+
+#img-front, #img-back {
+    max-width:auto;
+    max-height:100%;
+    object-fit:scale-down;
 }
 
 .photoSource {

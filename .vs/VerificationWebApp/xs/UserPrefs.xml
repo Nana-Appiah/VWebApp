@@ -1,10 +1,15 @@
 ﻿<Properties StartupConfiguration="{5C738BDB-F0DF-40BF-BA18-D472CAB829A6}|Default">
-  <MonoDevelop.Ide.ItemProperties.VerificationWebApp PreferredExecutionTarget="/Applications/Firefox.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VerificationWebApp/Controllers/CustomerController.cs">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="29" column="1" />
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="28" column="1" />
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/middleWare/ApiServer.cs" relfile="middleWare/ApiServer.cs" line="37" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="VerificationWebApp/DbData/IDVerificationTestContext.cs">
     <Files>
-      <File FileName="VerificationWebApp/Controllers/CustomerController.cs" Line="42" Column="26" />
+      <File FileName="VerificationWebApp/DbData/IDVerificationTestContext.cs" Line="39" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,11 +17,15 @@
           <Node name="VerificationWebApp" expanded="True">
             <Node name="middleWare" expanded="True" />
             <Node name="VerificationWebApp" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
               </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="DbData" expanded="True">
+                <Node name="IDVerificationTestContext.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -29,13 +38,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="29" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="28" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Models/ApiRequest.cs" relfile="VerificationWebApp/Models/ApiRequest.cs" line="55" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/middleWare/ApiServer.cs" relfile="middleWare/ApiServer.cs" line="37" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.VerificationWebApp PreferredExecutionTarget="/Applications/Firefox.app" />
 </Properties>

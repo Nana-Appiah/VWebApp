@@ -69,7 +69,7 @@ namespace VerificationWebApp.Models
 				db.customerNumber = x["customerNumber"].ToString();
 				db.accountNumber = x["accountNumber"].ToString();
 				db.fullName = x["fullName"].ToString();
-				db.dateOfBirth = await formatDoB(x["dateOfBirth"].ToString().Split('/'));
+				db.dateOfBirth = formatDoB(x["dateOfBirth"].ToString().Split('/'));
 				db.documentType = x["documentType"].ToString();
 				db.documentNumber = x["documentNumber"].ToString();
 				db.gender = x["gender"].ToString();
@@ -80,7 +80,7 @@ namespace VerificationWebApp.Models
 				db.additionalData = x["additionalData"].ToString();
 
 				
-				db.verificationStatus = await doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
+				db.verificationStatus = doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
 
 				return db;
 			}
@@ -90,7 +90,7 @@ namespace VerificationWebApp.Models
             }
         }
 
-		private async Task<string> doesMobileExist(string telFromPage, string[] telsOnFile)
+		private string doesMobileExist(string telFromPage, string[] telsOnFile)
         {
 			//telFromPage: the telephone number provided by the customer using the web page
 			//telsOnFile: the list of telephone numbers on file in the core-banking system
@@ -107,7 +107,7 @@ namespace VerificationWebApp.Models
 			return s;
         }
 
-		private async Task<string> formatDoB(string[] parts)
+		private string formatDoB(string[] parts)
         {
 			return string.Format("{0}-{1}-{2}", parts[2], parts[0], parts[1]);
         }
