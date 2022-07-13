@@ -38,7 +38,10 @@ namespace VerificationWebApp.Controllers
                 };
 
                 //check to see if the user has alread been verified
-
+                if (await requestService.hasUserVerified())
+                {
+                    return Json(new { status = true, data = string.Format("{0} with account Number {1} has already undergone successful verification",customer.actName, customer.actNo)});
+                }
 
                 var obj = await requestService.GetDatabaseRecordAsync(customer.TelNo);
 

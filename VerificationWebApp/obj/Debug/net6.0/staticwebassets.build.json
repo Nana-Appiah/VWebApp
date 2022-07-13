@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "Q3eLsII0JC0agMGRrwhCEV5ILgc0KfjsREOUXHihwPs=",
-=======
-  "Hash": "BWpfVC0wNsh1mNhLHIPCxrNy2fLsTH0G1qjZRiyslT8=",
->>>>>>> ca152c0e8192bae3a66cd0390419ab5ca2c0d091
+  "Hash": "UQ2SZ+K9Skca4S2Go9xcWPs0eJ5Kc05tPxAfnqvAW70=",
   "Source": "VerificationWebApp",
   "BasePath": "_content/VerificationWebApp",
   "Mode": "Default",
@@ -157,11 +153,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-<<<<<<< HEAD
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/Ghana_card_back.svg",
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\Ghana_card_back.svg",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
       "BasePath": "_content/VerificationWebApp",
       "RelativePath": "images/Ghana_card_back.svg",
       "AssetKind": "All",
@@ -172,13 +167,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/Ghana_card_back.svg"
+      "OriginalItemSpec": "wwwroot\\images\\Ghana_card_back.svg"
     },
     {
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/Ghana_card_front.svg",
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\Ghana_card_front.svg",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
       "BasePath": "_content/VerificationWebApp",
       "RelativePath": "images/Ghana_card_front.svg",
       "AssetKind": "All",
@@ -189,13 +184,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/Ghana_card_front.svg"
+      "OriginalItemSpec": "wwwroot\\images\\Ghana_card_front.svg"
     },
     {
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/logo1.jpeg",
-=======
       "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\logo1.jpeg",
->>>>>>> ca152c0e8192bae3a66cd0390419ab5ca2c0d091
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
@@ -246,11 +238,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo3.jpeg"
     },
     {
-<<<<<<< HEAD
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/nat_id_back.jpg",
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\nat_id_back.jpg",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
       "BasePath": "_content/VerificationWebApp",
       "RelativePath": "images/nat_id_back.jpg",
       "AssetKind": "All",
@@ -261,13 +252,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/nat_id_back.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\nat_id_back.jpg"
     },
     {
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/nat_id_front.jpg",
+      "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\nat_id_front.jpg",
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/",
+      "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
       "BasePath": "_content/VerificationWebApp",
       "RelativePath": "images/nat_id_front.jpg",
       "AssetKind": "All",
@@ -278,13 +269,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/images/nat_id_front.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\nat_id_front.jpg"
     },
     {
-      "Identity": "/Users/nana/Projects/VerificationWebApp/VerificationWebApp/wwwroot/images/NationalCard-back.jpeg",
-=======
       "Identity": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\images\\NationalCard-back.jpeg",
->>>>>>> ca152c0e8192bae3a66cd0390419ab5ca2c0d091
       "SourceId": "VerificationWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\aonana\\Desktop\\vweb\\VerificationWebApp\\wwwroot\\",
