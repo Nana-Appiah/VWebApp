@@ -73,7 +73,7 @@ namespace VerificationWebApp.Controllers
                                 AcctNo = obj.accountNumber,
                                 AcctName = customer.actName,
                                 NationalId = dt.person.nationalId,
-                                ShortCode = dt.shortGuid,
+                                ShortCode =  dt.shortGuid,
                                 Telephone = customer.TelNo,
                                 frontPicture = new ImageFormatter() { rawBase64String = customer.frontPicture }.trimBase64String(),
                                 backPicture = new ImageFormatter() { rawBase64String = customer.backPicture }.trimBase64String(),

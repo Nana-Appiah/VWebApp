@@ -23,11 +23,12 @@ namespace VerificationWebApp.DbModels
         /// <summary>
         /// Ghana Card or TIN Number
         /// </summary>
+        /// 
+        public string AcctName { get; set; }
+
         [Column("NationalID")]
         [StringLength(50)]
         [Unicode(false)]
-
-        public string AcctName { get; set; }
         public string NationalId { get; set; }
         /// <summary>
         /// The short code from the NIA verification

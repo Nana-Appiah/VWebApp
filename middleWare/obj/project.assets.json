@@ -70,28 +70,31 @@
     ]
   },
   "packageFolders": {
-    "/Users/nana/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\aonana\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj",
+      "projectUniqueName": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj",
       "projectName": "middleWare",
-      "projectPath": "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj",
-      "packagesPath": "/Users/nana/.nuget/packages/",
-      "outputPath": "/Users/nana/Projects/VerificationWebApp/middleWare/obj/",
+      "projectPath": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj",
+      "packagesPath": "C:\\Users\\aonana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "/Users/nana/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\aonana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -134,7 +137,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }

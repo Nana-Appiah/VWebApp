@@ -46,7 +46,7 @@ namespace VerificationWebApp.DbData
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"data source = 10.150.0.19; initial catalog = IDVerificationTest; user id = sa; password =$Passw0rd; MultipleActiveResultSets = True; ");
+                optionsBuilder.UseSqlServer(VerificationWebApp.Models.ConfigObject.KONNECT);
             }
         }
 
