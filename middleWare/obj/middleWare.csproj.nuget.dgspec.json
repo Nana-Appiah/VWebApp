@@ -1,31 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj": {}
+    "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj": {
+    "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj",
+        "projectUniqueName": "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj",
         "projectName": "middleWare",
-        "projectPath": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\middleWare.csproj",
-        "packagesPath": "C:\\Users\\aonana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aonana\\Desktop\\vweb\\middleWare\\obj\\",
+        "projectPath": "/Users/nana/Projects/VerificationWebApp/middleWare/middleWare.csproj",
+        "packagesPath": "/Users/nana/.nuget/packages/",
+        "outputPath": "/Users/nana/Projects/VerificationWebApp/middleWare/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\aonana\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/nana/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
         }
       }
     }
