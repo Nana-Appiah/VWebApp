@@ -1,0 +1,190 @@
+﻿/* Style inputs, select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+/* Style the submit button */
+input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+#btnSubmit {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+}
+
+/* Style the container */
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    position:relative;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+.bg {
+    /* Image Location */
+    background-image: url("../images/logo2.jpeg");
+
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+
+    /* Font color */
+    color:green;
+}
+
+/*
+img {
+    height:200px;
+}
+*/
+
+#img-front, #img-back {
+    max-width:auto;
+    max-height:100%;
+    object-fit:scale-down;
+}
+
+.photoSource {
+    content: url("../images/silhouette.jpeg")
+}
+
+.idBack{
+    content: url("../images/NationalCard-back.jpeg")
+}
+
+.idFront{
+    content:url("../images/NationalCard-front.jpeg")
+}
+
+.container>h3 {
+    font-family: sans-serif;
+    text-align:center;
+    font-size:30px;
+    color:#222;
+}
+
+#photo {
+    height:100%;
+    width:100%;
+}
+
+#file {
+    display:none;
+}
+
+#uploadBtn {
+    height:40px;
+    width: 100%;
+    position:absolute;
+    bottom: 0;
+    left:50%;
+    transform:translateX(-50%);
+    text-align:center;
+    color:wheat;
+    line-height:30px;
+    font-family:sans-serif;
+    font-size:15px;
+    background: rgba(0,0,0,0.7);
+    
+}
+
+.profile-pic-div {
+    height: 300px;
+    width: 300px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.parent {
+    position: relative;
+    height: 400px;
+    width: 600px;
+    padding: 20px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 2%;
+    overflow: hidden;
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+    
+    border: none;
+
+    margin:15px;
+    /* centering child div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.parent .child {
+    width: 50%;
+    height: 50%;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid green; */
+}
+

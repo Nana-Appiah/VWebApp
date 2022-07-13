@@ -112,6 +112,24 @@ namespace VerificationWebApp.Models
 			return string.Format("{0}-{1}-{2}", parts[2], parts[0], parts[1]);
         }
 		
+		public async Task<bool> hasUserVerified()
+        {
+            //use databasePayLoad to determine if the user has already gone through a successful validation
+            try
+            {
+				using (var config = new IDVerificationTestContext())
+                {
+					var obj = config.Verifieds.Where(x => x.AcctNo == this.databasePayLoad.accountNumber).FirstOrDefault();
+
+					return obj == null ? false : true;
+                }
+            }
+			catch(Exception x)
+            {
+				Debug.Print(x.Message);
+				return false;
+            }
+        }
 
 		public async Task<bool> SaveRecordAsync()
         {
