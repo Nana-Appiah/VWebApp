@@ -29,9 +29,6 @@ namespace VerificationWebApp.Models
 
 		private const string merchant_key = @"e4a8745a-131b-4c05-a350-17fd992eba35";
 
-		//private string baseURI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
-		//private string databaseURI =  @"http://localhost:8000/api/customer";
-
 		public string databaseURI { get; set; }
 
 		public async Task<data> GetBiometricData()
@@ -114,7 +111,6 @@ namespace VerificationWebApp.Models
 		
 		public async Task<bool> hasUserVerified()
         {
-            //use databasePayLoad to determine if the user has already gone through a successful validation
             try
             {
 				using (var config = new IDVerificationTestContext())
@@ -133,7 +129,6 @@ namespace VerificationWebApp.Models
 
 		public async Task<bool> SaveRecordAsync()
         {
-            //method is used to save record asynchronously
             try
             {
 				using (var config = new IDVerificationTestContext())

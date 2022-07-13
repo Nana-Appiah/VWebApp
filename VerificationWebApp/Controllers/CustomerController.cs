@@ -13,8 +13,6 @@ using middleWare;
 using VerificationWebApp.Models;
 using System.Text;
 using System.Text.Json;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 using VerificationWebApp.DbModels;
 
 namespace VerificationWebApp.Controllers
@@ -26,7 +24,6 @@ namespace VerificationWebApp.Controllers
         {
             try
             {
-                //check for database record existing before doing liveness test
                 var dbData = new DbPayload() {
                     accountNumber = customer.actNo.Trim(),
                     customerNumber = String.Empty
@@ -37,7 +34,6 @@ namespace VerificationWebApp.Controllers
                     databasePayLoad = dbData
                 };
 
-                //check to see if the user has alread been verified
                 if (await requestService.hasUserVerified())
                 {
                     return Json(new { status = true, data = string.Format("{0} with account Number {1} has already undergone successful verification",customer.actName, customer.actNo)});
@@ -49,7 +45,6 @@ namespace VerificationWebApp.Controllers
                 {
                     bool blnStatus = false;
 
-                    //convert file
                     var objPayLoad = new PayLoad()
                     {
                         pinNumber = customer.ghCardNo.Trim(),
@@ -73,7 +68,6 @@ namespace VerificationWebApp.Controllers
 
                         if (blnStatus)
                         {
-                            //save record in the database
                             var verifiedObj = new Verified()
                             {
                                 AcctNo = obj.accountNumber,
