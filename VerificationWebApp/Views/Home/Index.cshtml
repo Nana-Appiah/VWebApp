@@ -126,7 +126,7 @@
 
     <script src="~/js/imgPreviewer.js" defer></script>
     <script src="~/js/ghcard.js" defer></script>
-    <script>/* Picture taking module */
+    <script>
 
         const btn = document.getElementById("takeApic");
         const cancelBtn = document.getElementById("cancelBtn");
@@ -151,8 +151,6 @@
         let activeImage;
 
         let cameraStream;
-
-        /* bind the click event to the img element */
 
         picDiv.addEventListener("click", (ev) => {
             ev.preventDefault();
@@ -187,12 +185,9 @@
             }
         }
 
-        /* camera button click */
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
             cameraStream = stream;
             video.srcObject = stream;
-
-            /*playing the video*/
             video.play();
         }).catch(function (err) {
             /* catch error here */
@@ -211,24 +206,18 @@
 
         function takeSnapShot() {
 
-            //setting the dimensions of the hidden canvas to the video element
             hidden_canvas.width = width;
             hidden_canvas.height = height;
 
             context.drawImage(video, 0, 0, width, height);
 
-            /* get an image dataURL from the canvas */
             const imageDataUrl = hidden_canvas.toDataURL("image/png");
 
             imgData.setAttribute("value", imageDataUrl);
 
             photo.setAttribute("src", imageDataUrl);
-
-            /* close the camera */
-            /* turnCameraOff(cameraStream); */
         }
 
-        /* event binding */
         btn.addEventListener("click", () => {
             takeSnapShot();
             cancelBtn.click();
@@ -245,8 +234,6 @@
             });
 
             function handleResponse(res) {
-
-                //console.log(res);
 
                 if (res.status.toString() == "true") {
                     alert(res.data.toString());
@@ -272,7 +259,6 @@
             }
 
             function showErrorMessage(message) {
-                /* show a popup logic or an alert logic */
                 var popup = $('#errorAlert');
                 popup.removeClass('d-none');
                 $('body').removeClass('loading');
@@ -281,8 +267,6 @@
                     popup.addClass('d-none');
                 }, 5000);
             }
-
-            /* submit event click */
 
             $('#verifyForm').on('submit', function (e) {
                 e.preventDefault();

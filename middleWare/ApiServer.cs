@@ -20,10 +20,6 @@ namespace middleWare
 {
 	public class ApiServer
 	{
-		//public string imsGhAPI = @"https://selfie.imsgh.org:9020/api/v1/third-party/verification";
-
-        //public string flexcubeAPI = @"http://localhost:8000/api/customer";
-
         public string imsGhAPI { get; set; }
         public string flexcubeAPI { get; set; }
 

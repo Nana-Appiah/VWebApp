@@ -1,0 +1,23 @@
+﻿.modal-header {
+    background: #F7941E;
+    color: #fff;
+}
+
+.modal-body {
+    background: #fff;
+    color: black;
+}
+
+.modal-ku {
+    width: 750px;
+    margin: auto;
+}
+
+.modal-content {
+    height: 100%;
+}
+
+.modal {
+   left:25%;
+   top: 20%;
+}
