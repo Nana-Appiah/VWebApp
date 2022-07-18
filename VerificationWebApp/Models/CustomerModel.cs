@@ -17,7 +17,8 @@ namespace VerificationWebApp.Models
 
 		public string TelNo { get; set; }
 
-		public string motherName { get; set; }
+		//public string motherName { get; set; }
+		public string dateOfBirth { get; set; }
 
 		public string imgData { get; set; }
 

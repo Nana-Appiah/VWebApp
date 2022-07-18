@@ -29,17 +29,27 @@ namespace VerificationWebApp.Controllers
                     customerNumber = String.Empty
                 };
 
-                var requestService = new ApiRequest() {
-                    databaseURI = ConfigObject.API,
+                var requestService = new ApiRequest()
+                {
                     databasePayLoad = dbData
                 };
-
-                if (await requestService.hasUserVerified())
+                
+                if (await requestService.CallVerificationAPIAsync(customer.ghCardNo))
                 {
-                    return Json(new { status = true, data = string.Format("{0} with account Number {1} has already undergone successful verification",customer.actName, customer.actNo)});
+                    return Json(new { status = false, data = string.Format("{0} with account Number {1} has already undergone successful verification", customer.actName, customer.actNo) });
                 }
 
-                var obj = await requestService.GetDatabaseRecordAsync(customer.TelNo);
+                var obj = await requestService.CallDatabaseRecordAPIAsync(customer.TelNo,customer.dateOfBirth);
+
+                if (obj.DoBverification == false)
+                {
+                    return Json(new { status = false, data = string.Format("Date of birth supplied by {0} does not match one in Database",customer.actName) });
+                }
+
+                if (obj.verificationStatus == false)
+                {
+                    return Json(new { status = false, data = "Telephone number NOT found on file" });
+                }
 
                 if (obj != null)
                 {
@@ -57,7 +67,7 @@ namespace VerificationWebApp.Controllers
                     var api = new ApiServer() 
                     {
                         imsGhAPI = ConfigObject.NIA_API,
-                        flexcubeAPI = ConfigObject.API
+                        flexcubeAPI = ConfigObject.Db_API
                     };
 
                     var dt = await api.ApiRequestDataAsync(objPayLoad);
@@ -68,20 +78,8 @@ namespace VerificationWebApp.Controllers
 
                         if (blnStatus)
                         {
-                            var verifiedObj = new Verified()
-                            {
-                                AcctNo = obj.accountNumber,
-                                AcctName = customer.actName,
-                                NationalId = dt.person.nationalId,
-                                ShortCode =  dt.shortGuid,
-                                Telephone = customer.TelNo,
-                                frontPicture = new ImageFormatter() { rawBase64String = customer.frontPicture }.trimBase64String(),
-                                backPicture = new ImageFormatter() { rawBase64String = customer.backPicture }.trimBase64String(),
-                                rawData = JsonSerializer.Serialize(dt)
-                            };
-
-                            requestService.oVerified = verifiedObj;
-                            bool b = await requestService.SaveRecordAsync();
+                            //using both obj and dt data structures
+                            bool b = await requestService.SaveRecordAsync(obj,customer, dt);
 
                             if (b)
                             {

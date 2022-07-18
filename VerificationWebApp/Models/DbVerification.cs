@@ -4,13 +4,7 @@ namespace VerificationWebApp.Models
 {
     public class DbVerification
     {
-        private IDVerificationTestContext config;
-
-        public DbVerification()
-        {
-            config = new IDVerificationTestContext();
-        }
-
+        
         #region Properties
 
         public string customerNumber { get; set; }
@@ -26,8 +20,8 @@ namespace VerificationWebApp.Models
         public string description { get; set; }
         public string additionalData { get; set; }
 
-        public string verificationStatus { get; set; }
-        
+        public bool verificationStatus { get; set; }
+        public bool DoBverification { get; set; }
         #endregion
 
 

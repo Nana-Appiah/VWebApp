@@ -96,5 +96,28 @@ namespace middleWare
 		public string addressDigital { get; set; }
     }
 
+
+	//PUSH Response payload
+	public class PUSHPayload
+    {
+		public string customerNumber { get; set; }
+		public string accountNumber { get; set; }
+		public string accountName { get; set; }
+		public string dateOfBirth { get; set; }
+		public string mobileNumber { get; set; }
+		public string idPhotoFront { get; set; }
+		public string idPhotoBack { get; set; }
+
+		public CallBack callbackData { get; set; }
+
+    }
+
+	public class CallBack
+    {
+		public string code { get; set; }
+		public data data { get; set; }
+		public bool success { get; set; }
+    }
+
 }
 
