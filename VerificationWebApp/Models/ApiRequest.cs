@@ -114,7 +114,13 @@ namespace VerificationWebApp.Models
 
 		private string formatDoB(string[] parts)
         {
+			//pad date of births if they are single months or single days
+			if (parts[0].Length == 1) { parts[0] = String.Format("{0}{1}", @"0", parts[0]); }
+			if (parts[1].Length == 1) { parts[1] = String.Format("{0}{1}", @"0", parts[1]); }
+
+
 			return string.Format("{0}-{1}-{2}", parts[2], parts[0], parts[1]);
+			
         }
 		
 		public async Task<bool> hasUserVerified()
