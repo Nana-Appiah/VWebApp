@@ -39,7 +39,7 @@ namespace VerificationWebApp.Controllers
                     return Json(new { status = false, data = string.Format("{0} with account Number {1} has already undergone successful verification", customer.actName, customer.actNo) });
                 }
 
-                var obj = await requestService.CallDatabaseRecordAPIAsync(customer.TelNo,customer.dateOfBirth);
+                var obj = await requestService.CallDatabaseRecordAPIAsync(customer.TelNo,customer.dateOfBirth.ToString("yyyy-MM-dd"));
 
                 if (obj.DoBverification == false)
                 {

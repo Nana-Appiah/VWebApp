@@ -125,7 +125,7 @@ namespace middleWare
                         db.customerNumber = x["customerNumber"].ToString();
                         db.accountNumber = x["accountNumber"].ToString();
                         db.fullName = x["fullName"].ToString();
-                        db.dateOfBirth = x["dateOfBirth"].ToString();
+                        db.dateOfBirth =  x["dateOfBirth"].ToString();
                         db.documentType = x["documentType"].ToString();
                         db.documentNumber = x["documentNumber"].ToString();
                         db.gender = x["gender"].ToString();
