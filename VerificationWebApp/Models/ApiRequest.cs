@@ -16,6 +16,8 @@ using Json.Net;
 using VerificationWebApp.DbData;
 using VerificationWebApp.DbModels;
 
+using middleWare;
+
 namespace VerificationWebApp.Models
 {
 	public class ApiRequest
@@ -49,59 +51,65 @@ namespace VerificationWebApp.Models
             }
         }
 
-		public async Task<DbVerification> GetDatabaseRecordAsync(string mobileNo)
+		public async Task<DbVerification> CallDatabaseRecordAPIAsync(string mobileNo, string DoB)
         {
-			var api = new ApiServer();
-			var returnString = await api.GetDatabaseRecordAsync(databasePayLoad,databaseURI);
+			DbVerification db = null;
 
-			if (returnString.Length > 0)
+			var api = new ApiServer() {
+				flexcubeAPI = ConfigObject.Db_API,
+				apiHeader = ConfigObject.API_KEY
+			};
+
+			var returnObj = await api.GetDatabaseRecordAsync(databasePayLoad);
+
+			/* format and send response to client */
+			if (returnObj != null)
             {
-				//deserialize the object
-				var x = JObject.Parse(returnString);
-				var dt = JsonConvert.DeserializeObject<DbVerification>(returnString);
+				db = new DbVerification() {
+					customerNumber = returnObj.customerNumber,
+					accountNumber  = returnObj.accountNumber,
+					fullName = returnObj.fullName,
+					dateOfBirth = formatDoB(returnObj.dateOfBirth.Split('/')),
+					documentType = returnObj.documentType,
+					documentNumber = returnObj.documentNumber,
+					gender = returnObj.gender,
+					motherMaidenName = returnObj.motherMaidenName,
+					mobileNumber = returnObj.mobileNumber,
+					responseCode = returnObj.responseCode,
+					description = returnObj.description,
+					additionalData = returnObj.additionalData
+				};
 
-				/* format and send response to client */
-				var db = new DbVerification();
-
-				db.customerNumber = x["customerNumber"].ToString();
-				db.accountNumber = x["accountNumber"].ToString();
-				db.fullName = x["fullName"].ToString();
-				db.dateOfBirth = formatDoB(x["dateOfBirth"].ToString().Split('/'));
-				db.documentType = x["documentType"].ToString();
-				db.documentNumber = x["documentNumber"].ToString();
-				db.gender = x["gender"].ToString();
-				db.motherMaidenName = x["motherMaidenName"].ToString();
-				db.mobileNumber = x["mobileNumber"].ToString();
-				db.responseCode = x["responseCode"].ToString();
-				db.description = x["description"].ToString();
-				db.additionalData = x["additionalData"].ToString();
-
-				
 				db.verificationStatus = doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
-
-				return db;
-			}
-            else
-            {
-				return null;
+				db.DoBverification = isValidDob(DoB, db.dateOfBirth);
             }
+            
+			return db;
         }
 
-		private string doesMobileExist(string telFromPage, string[] telsOnFile)
+		private bool isValidDob(string suppliedDoB, string dbaseDoB)
+        {
+			return string.CompareOrdinal(suppliedDoB, dbaseDoB) == 0 ? true : false;
+        }
+
+		private bool doesMobileExist(string telFromPage, string[] telsOnFile)
         {
 			//telFromPage: the telephone number provided by the customer using the web page
 			//telsOnFile: the list of telephone numbers on file in the core-banking system
-			string s = @"Telephone number NOT found on file";
+			//string s = @"Telephone number NOT found on file";
+
+			bool bln = false;
 
 			foreach(var t in telsOnFile)
             {
 				if (telFromPage.Contains(t))
                 {
-					return s = @"Telephone number found on file";
+					//return s = @"Telephone number found on file";
+					return bln = true;
 				}
             }
 
-			return s;
+			return bln;
         }
 
 		private string formatDoB(string[] parts)
@@ -127,17 +135,52 @@ namespace VerificationWebApp.Models
             }
         }
 
-		public async Task<bool> SaveRecordAsync()
+		public async Task<bool> CallVerificationAPIAsync(string GHCardNo)
+        {
+			//method is responsible for calling the verification API in the middleware
+			
+			var serviceRequest = new ApiServer()
+			{
+				verificationAPI = ConfigObject.GhanaCardVerificationAPI,
+				apiHeader = ConfigObject.API_KEY
+			};
+
+			var response = await serviceRequest.GCVerifyAsync(GHCardNo);
+
+			return response.responseCode == @"00" ? true : false;
+        }
+
+		public async Task<bool> SaveRecordAsync(DbVerification dbo, CustomerModel obj, data ghCardVerificationResponse)
         {
             try
             {
-				using (var config = new IDVerificationTestContext())
-                {
-					config.Verifieds.Add(oVerified);
-					await config.SaveChangesAsync();
+				
+				var serviceRequest = new ApiServer() {
+					pushAPI = ConfigObject.postCustomerDataAPI,
+					apiHeader = ConfigObject.API_KEY
+				};
 
-					return true;
-                }
+				PUSHPayload push = new PUSHPayload()
+				{
+					customerNumber = dbo.customerNumber,
+					accountNumber = obj.actNo,
+					accountName = obj.actName,
+					dateOfBirth = obj.dateOfBirth,
+					mobileNumber = obj.TelNo,
+					idPhotoFront = new ImageFormatter() { rawBase64String = obj.frontPicture }.trimBase64String(),
+					idPhotoBack = new ImageFormatter() { rawBase64String = obj.backPicture }.trimBase64String(),
+					callbackData = new CallBack()
+                    {
+						code = @"00",
+						data = ghCardVerificationResponse,
+						success = true
+                    }
+				};
+
+				var resp = await serviceRequest.PushCustomerDataAsync(push);
+
+				return resp.responseCode == @"00" ? true : false;
+
             }
 			catch(Exception x)
             {

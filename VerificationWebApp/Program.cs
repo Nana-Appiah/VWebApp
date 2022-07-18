@@ -7,16 +7,14 @@ var builder = WebApplication.CreateBuilder(args);
 /* configuration object...newly added */
 var settings = builder.Configuration.GetSection("Settings").Get<Settings>();
 
-//builder.Services.AddDbContext<VerificationWebApp.DbData.IDVerificationTestContext>(options =>
-//{
-//    options.UseSqlServer(settings.connection);
-//});
-
 ConfigObject.KONNECT = settings.connection;
-ConfigObject.API = settings.apiUrl;
+ConfigObject.Db_API = settings.apiUrl;
 ConfigObject.NIA_API = settings.imsghAPI;
 
-/* user configuration starts here */
+ConfigObject.GhanaCardVerificationAPI = settings.verifyGHCardAPI;
+ConfigObject.postCustomerDataAPI = settings.postDataAPI;
+
+ConfigObject.API_KEY = settings.apiKey;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
