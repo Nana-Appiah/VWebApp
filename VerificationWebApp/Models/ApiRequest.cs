@@ -165,7 +165,7 @@ namespace VerificationWebApp.Models
 					customerNumber = dbo.customerNumber,
 					accountNumber = obj.actNo,
 					accountName = obj.actName,
-					dateOfBirth = obj.dateOfBirth,
+					dateOfBirth = obj.dateOfBirth.ToString("yyyy-mm-dd"),
 					mobileNumber = obj.TelNo,
 					idPhotoFront = new ImageFormatter() { rawBase64String = obj.frontPicture }.trimBase64String(),
 					idPhotoBack = new ImageFormatter() { rawBase64String = obj.backPicture }.trimBase64String(),
