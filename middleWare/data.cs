@@ -110,6 +110,7 @@ namespace middleWare
 
 		public CallBack callbackData { get; set; }
 		public string photo { get; set; }
+		public string nationalId { get; set; }
     }
 
 	public class CallBack

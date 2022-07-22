@@ -180,7 +180,8 @@ namespace VerificationWebApp.Models
 						data = ghCardVerificationResponse,
 						success = true
                     },
-					photo = LIVENESS_STRING
+					photo = LIVENESS_STRING,
+					nationalId = obj.ghCardNo
 				};
 
 				var resp = await serviceRequest.PushCustomerDataAsync(push);
