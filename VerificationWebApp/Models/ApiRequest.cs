@@ -156,7 +156,7 @@ namespace VerificationWebApp.Models
 			return response.responseCode == @"00" ? true : false;
         }
 
-		public async Task<bool> SaveRecordAsync(DbVerification dbo, CustomerModel obj, data ghCardVerificationResponse)
+		public async Task<bool> SaveRecordAsync(DbVerification dbo, CustomerModel obj, data ghCardVerificationResponse, string LIVENESS_STRING)
         {
             try
             {
@@ -180,7 +180,8 @@ namespace VerificationWebApp.Models
 						code = @"00",
 						data = ghCardVerificationResponse,
 						success = true
-                    }
+                    },
+					photo = LIVENESS_STRING
 				};
 
 				var resp = await serviceRequest.PushCustomerDataAsync(push);

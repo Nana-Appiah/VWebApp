@@ -22,3 +22,15 @@ C:/Users/aonana/Desktop/vweb/middleWare/obj/Debug/net6.0/ref/middleWare.dll
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/refint/middleWare.dll
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/middleWare.pdb
 /Users/nana/Projects/VerificationWebApp/middleWare/obj/Debug/net6.0/ref/middleWare.dll
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\bin\Debug\net6.0\middleWare.deps.json
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\bin\Debug\net6.0\middleWare.dll
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\bin\Debug\net6.0\middleWare.pdb
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.csproj.AssemblyReference.cache
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.GeneratedMSBuildEditorConfig.editorconfig
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.AssemblyInfoInputs.cache
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.AssemblyInfo.cs
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.csproj.CoreCompileInputs.cache
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.dll
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\refint\middleWare.dll
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\middleWare.pdb
+G:\Dev_Repository\Projects\Nana\Apps\vweb\middleWare\obj\Debug\net6.0\ref\middleWare.dll

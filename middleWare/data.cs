@@ -109,7 +109,7 @@ namespace middleWare
 		public string idPhotoBack { get; set; }
 
 		public CallBack callbackData { get; set; }
-
+		public string photo { get; set; }
     }
 
 	public class CallBack
