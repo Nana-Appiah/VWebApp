@@ -1,25 +1,17 @@
 ﻿<Properties StartupConfiguration="{5C738BDB-F0DF-40BF-BA18-D472CAB829A6}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="29" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="28" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/CustomerController.cs" relfile="VerificationWebApp/Controllers/CustomerController.cs" line="73" column="1" />
-      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/middleWare/ApiServer.cs" relfile="middleWare/ApiServer.cs" line="56" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="VerificationWebApp/Models/ApiRequest.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="VerificationWebApp/Models/Settings.cs">
     <Files>
-      <File FileName="VerificationWebApp/Controllers/CustomerController.cs" Line="82" Column="1" />
-      <File FileName="VerificationWebApp/Models/ApiRequest.cs" Line="196" Column="1" />
-      <File FileName="middleWare/ApiServer.cs" Line="240" Column="1" />
-      <File FileName="VerificationWebApp/Models/ImageFormatter.cs" Line="80" Column="1" />
-      <File FileName="middleWare/data.cs" Line="11" Column="1" />
+      <File FileName="VerificationWebApp/Controllers/CustomerController.cs" Line="74" Column="1" />
+      <File FileName="VerificationWebApp/appsettings.json" Line="9" Column="6" />
+      <File FileName="VerificationWebApp/Models/Settings.cs" Line="10" Column="48" />
+      <File FileName="VerificationWebApp/Program.cs" Line="18" Column="1" />
+      <File FileName="VerificationWebApp/Models/ApiRequest.cs" Line="63" Column="52" />
+      <File FileName="middleWare/ApiServer.cs" Line="57" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="VerificationWebApp" expanded="True">
+          <Node name="VerificationWebApp" expanded="True" selected="True">
             <Node name="middleWare" expanded="True">
               <Node name="Dependencies" expanded="True" />
             </Node>
@@ -42,7 +34,15 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.VerificationWebApp PreferredExecutionTarget="/Applications/Safari.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.VerificationWebApp PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="29" column="1" />
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/VerificationWebApp/Controllers/HomeController.cs" relfile="VerificationWebApp/Controllers/HomeController.cs" line="28" column="1" />
+      <Breakpoint file="/Users/nana/Projects/VerificationWebApp/middleWare/ApiServer.cs" relfile="middleWare/ApiServer.cs" line="56" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
