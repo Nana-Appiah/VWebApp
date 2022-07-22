@@ -13,13 +13,13 @@ namespace VerificationWebApp.Models
 
     public class ConfigObject
     {
-        public static string KONNECT { get; set; }
-        public static string Db_API { get; set; }
-        public static string NIA_API { get; set; }
+        public static string? KONNECT { get; set; }
+        public static string? Db_API { get; set; }
+        public static string? NIA_API { get; set; }
 
-        public static string GhanaCardVerificationAPI { get; set; }
-        public static string postCustomerDataAPI { get; set; }
-        public static string API_KEY { get; set; }
+        public static string? GhanaCardVerificationAPI { get; set; }
+        public static string? postCustomerDataAPI { get; set; }
+        public static string? API_KEY { get; set; }
     }
 
 }

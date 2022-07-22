@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.ComponentModel;
 using System.Windows;
-using System.Diagnostics;
 
 namespace VerificationWebApp.Models
 {

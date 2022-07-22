@@ -53,7 +53,7 @@ namespace VerificationWebApp.Controllers
 
                 if (obj != null)
                 {
-                    bool blnStatus = false;
+                    //bool blnStatus = false;
 
                     var objPayLoad = new PayLoad()
                     {
@@ -76,7 +76,7 @@ namespace VerificationWebApp.Controllers
 
                     if (b)
                     {
-                        return Json(new { status = true, data = string.Format("{0} has been verified by Liveness test", customer.actName) });
+                        return Json(new { status = true, data = string.Format("Data of {0} has been submitted successfully!!!", customer.actName) });
                     }
                     else
                     {
