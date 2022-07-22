@@ -70,16 +70,36 @@ namespace VerificationWebApp.Controllers
                         flexcubeAPI = ConfigObject.Db_API
                     };
 
-                    var dt = await api.ApiRequestDataAsync(objPayLoad);
+                    //var dt = await api.ApiRequestDataAsync(objPayLoad);
 
+                    bool b = await requestService.SaveRecordAsync(obj, customer, new data { }, objPayLoad.image);
+
+                    if (b)
+                    {
+                        return Json(new { status = true, data = string.Format("{0} has been verified by Liveness test", customer.actName) });
+                    }
+                    else
+                    {
+                        return Json(new { status = false, data = string.Format("Sorry, your account exists but you failed Liveness test") });
+                    }
+                    //if (b)
+                    //{
+                    //    return Json(new { status = true, data = string.Format("{0},{1} has been verified by Liveness test", dt.person.surname, dt.person.forenames) });
+                    //}
+                    //else
+                    //{
+                    //    return Json(new { status = false, data = string.Format("Sorry, your account exists but you failed Liveness test") });
+                    //}
+
+                    /*
                     try
                     {
-                        blnStatus = dt.verified == @"TRUE" ? true : false;
+                        //blnStatus = dt.verified == @"TRUE" ? true : false;
 
                         if (blnStatus)
                         {
                             //using both obj and dt data structures
-                            bool b = await requestService.SaveRecordAsync(obj,customer, dt);
+                            bool b = await requestService.SaveRecordAsync(obj,customer, dt,objPayLoad.image);
 
                             if (b)
                             {
@@ -97,6 +117,7 @@ namespace VerificationWebApp.Controllers
                         Debug.Print($"error: {xx.Message}");
                         return Json(new { status = false, data = $"error: {xx.Message}" });
                     }
+                    */
                 }
                 else { return Json(new { status = false, data = $"account Number does not exist in the banking database" }); }
             }

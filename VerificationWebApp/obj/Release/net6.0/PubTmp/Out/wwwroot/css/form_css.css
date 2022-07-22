@@ -40,7 +40,7 @@ input[type=submit] {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
-    position:relative;
+    position: relative;
 }
 
 /* Floating column for labels: 25% width */
@@ -147,7 +147,6 @@ img {
     height: 300px;
     width: 300px;
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,21 +154,17 @@ img {
 
 .parent {
     position: relative;
-    height: 400px;
+    height: 340px;
     width: 600px;
     padding: 20px;
-
-    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    border-radius: 2%;
+    transform: translate(-50%,-20%);
+    border-radius: 5%;
     overflow: hidden;
     border: 1px solid grey;
     margin-left: auto;
-    margin-right: auto;
-    
+    margin-right: auto;  
     border: none;
-
     margin:15px;
     /* centering child div */
     display: flex;
@@ -181,7 +176,6 @@ img {
 .parent .child {
     width: 50%;
     height: 50%;
-
     display:flex;
     justify-content: center;
     align-items: center;
