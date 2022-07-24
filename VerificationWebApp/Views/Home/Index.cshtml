@@ -1,301 +1,348 @@
-﻿<div class="container">
+﻿   <div class="container">
+                <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
+                    <div class="container mt-5" style="display:flex;justify-content:center;">
+                        <div class="modal modal-lg" id="myModal" tabindex="-1" style="display:none;">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Take a selfie photo</h5>
+                                        <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                                    </div>
+                                    <div class="modal-body">
+                                        <video id="vid" class="form-control" autoplay></video>
+                                        <canvas id="c" style="display:none;"></canvas>
+                                    </div>
 
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" id="flipBtn">Switch Camera</button>
+                                        <button type="button" class="btn btn-danger" id="cancelBtn" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" id="takeApic">Capture</button>
+                                    </div>
 
-    <form method="post" id="verifyForm" asp-controller="Customer" asp-action="VerifyID" enctype="multipart/form-data">
-
-        <div class="container mt-5" style="display:flex;justify-content:center;">
-            <div class="modal modal-lg" id="myModal" tabindex="-1" style="display:none;">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Snap a Picture</h5>
-                            <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <video id="vid" class="form-control" autoplay></video>
-                            <canvas id="c" style="display:none;"></canvas>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" id="cancelBtn" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="takeApic">Take a Pic</button>
-                        </div>
-
                     </div>
-                </div>
+
+                    <div class="mt-5 parent">
+                        <div class="mt-5">
+                            <div class="profile-pic-div mt-5" id="picDiv">
+                                <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
+                                <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to take a selfie photo</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-100">
+                            <label for="actNo">Account Number</label>
+                        </div>
+                        <div class="col-100">
+                            <input type="text" id="actNo" name="customer.actNo" placeholder="Enter your account number here..." class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-100">
+                            <label for="actName">Account Name</label>
+                        </div>
+                        <div class="col-100">
+                            <input type="text" id="actName" name="customer.actName" placeholder="Enter your account name here..." class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-100">
+                            <label for="TelNo">Telephone Number (eg: 024xxxxxxx)</label>
+                        </div>
+                        <div class="col-100">
+                            <input type="text" id="TelNo" name="customer.TelNo" placeholder="Enter telephone number on file here..." class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-100">
+                            <label for="dateOfBirth">Select Date of Birth</label>
+                        </div>
+                        <div class="col-100">
+                            <input type="date" id="dateOfBirth" name="customer.dateOfBirth" placeholder="Select date of Birth" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-100">
+                            <label for="ghCardNo">Ghana Card Number (eg: GHA-xxxxxxxxx-x)</label>
+                        </div>
+                        <div class="col-100">
+                            <input type="text" id="ghCardNo" name="customer.ghCardNo" placeholder="Enter your Ghana card number here" class="form-control">
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row flex-container">
+                        <div class="flex-child">
+                            <label>Click on image below to upload front-facing part of National ID</label>
+                        </div>
+                        <div class="flex-child">
+                            <label>Click on image below to upload back-facing part of National ID</label>
+                        </div>
+                    </div>
+
+                    <div class="flex-container">
+                        <div class="flex-child front-pic">
+                            <input type="file" name="fpic" id="fpic" accept="image/*" class="form-control" style="display:none;">
+                            <img src="~/images/nat_id_front.jpg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive" height="300px" width="300px">
+                        </div>
+                        <div class="flex-child back-pic">
+                            <input type="file" name="bpic" id="bpic" accept="image/*" class="form-control" style="display:none;">
+                            <img src="~/images/nat_id_back.jpg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive" height="300px" width="300px">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <br />
+                        <input type="text" id="imgData" name="customer.imgData" value="" hidden>
+                    </div>
+                    <div class="row form-group">
+                        <br />
+                        <input type="text" id="backPicture" name="customer.backPicture" value="" hidden>
+                    </div>
+                    <div class="row form-group">
+                        <br />
+                        <input type="text" id="frontPicture" name="customer.frontPicture" value="" hidden>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <br />
+                        <input type="submit" id="btnSubmit" value="Submit">
+                    </div>
+                    <input type="text" id="flipMode" value="user" hidden>
+                </form>
+
+                <div class="loader"></div>
+
+                <script src="js/imgPreviewer.js" defer></script>
+                <script src="js/ghcard.js" defer></script>
+                <script>
+
+                    const flipBtn = document.getElementById("flipBtn");
+                    const btn = document.getElementById("takeApic");
+                    const cancelBtn = document.getElementById("cancelBtn");
+                    const imgData = document.getElementById("imgData");
+                    const video = document.getElementById("vid");
+                    const hidden_canvas = document.getElementById("c");
+                    const photo = document.getElementById("photo");
+
+                    const width = 640;
+                    const height = 480;
+
+                    const context = hidden_canvas.getContext("2d");
+
+                    const picDiv = document.getElementById("picDiv");
+                    const submitBtn = document.getElementById("btnSubmit");
+                    const modal = document.getElementById("myModal");
+
+                    const msgDialog = document.getElementById("msgDialog");
+
+                    const cameraBtn = document.getElementById("uploadBtn");
+
+                    let activeImage;
+
+                    let cameraStream;
+
+                    picDiv.addEventListener("click", (ev) => {
+                        ev.preventDefault();
+
+                        modal.style.display = "block";
+                    });
+
+                    function showMessage(title, msg) {
+                        myVar = setTimeout(showPage(title, msg), 3000);
+                    }
+
+                    cancelBtn.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        modal.style.display = "none";
+                    })
+
+                    window.onclick = function (event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+
+                        if (event.target == msgDialog) {
+                            msgDialog.style.display = "none";
+                        }
+                    }
+
+                    var constraints = {
+                        audio: false,
+                        video: {
+                            width: 640,
+                            height: 480
+                        }
+                    }
+
+                    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+                        cameraStream = stream;
+                        video.srcObject = stream;
+                        video.play();
+                    }).catch(function (err) {
+                        /* catch error here */
+                    })
+
+
+                    function turnCameraOff(stream) {
+                        stream.getTracks().forEach(function (track) {
+                            if (track.readyState == 'live' && track.kind === 'video') {
+                                track.stop();
+                            }
+                        });
+
+                        stream = null;
+                    }
+
+                    function flipCamera() {
+
+                        if (document.getElementById("flipMode").value == "user") {
+
+                            constraints = {
+                                audio: false,
+                                video: {
+                                    width: 640,
+                                    height: 480,
+                                    facingMode: "environment"
+                                }
+                            }
+
+                            document.getElementById("flipMode").setAttribute("value", "environment");
+
+                        }
+                        else {
+                            constraints = {
+                                audio: false,
+                                video: {
+                                    width: 640,
+                                    height: 480,
+                                    facingMode: "user"
+                                }
+                            }
+
+                            document.getElementById("flipMode").setAttribute("value", "user");
+
+                        }
+
+                        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+                            cameraStream = stream;
+                            video.srcObject = stream;
+                            video.play();
+                        }).catch(function (err) {
+                            alert(err); return true;
+                        })
+
+                    }
+
+                    flipBtn.addEventListener("click", () => {
+                        turnCameraOff(cameraStream);
+                        flipCamera();
+                    });
+
+                    function takeSnapShot() {
+
+                        hidden_canvas.width = width;
+                        hidden_canvas.height = height;
+
+                        context.drawImage(video, 0, 0, width, height);
+
+                        const imageDataUrl = hidden_canvas.toDataURL("image/png");
+
+                        imgData.setAttribute("value", imageDataUrl);
+
+                        photo.setAttribute("src", imageDataUrl);
+                    }
+
+                    btn.addEventListener("click", () => {
+                        takeSnapShot();
+                        cancelBtn.click();
+                    });
+
+                </script>
+
+                <script type="text/javascript">
+
+                    $(document).ready(function () {
+
+                        $body = $("body");
+
+                        $(document).on({
+                            ajaxStart: function () { $body.addClass("loading"); },
+                            ajaxStop: function () { $body.removeClass("loading"); }
+                        });
+
+                        function handleResponse(res) {
+
+                            if (res.status.toString() == "true") {
+                                alert(res.data.toString());
+
+                                document.getElementById("verifyForm").reset();
+
+                                $("#photo").addClass("photoSource");
+                                $("#fpic").addClass("idFront");
+                                $("#bpic").addClass("idBack");
+                            }
+                            else {
+                                alert(res.data.toString());
+                            }
+                        }
+
+                        function handleError(err) {
+
+                            if (xhr.responseText)
+                                showErrorMessage(xhr.responseText);
+                            else
+                                showErrorMessage("Error has occured. Please try again later.");
+
+                        }
+
+                        function showErrorMessage(message) {
+                            var popup = $('#errorAlert');
+                            popup.removeClass('d-none');
+                            $('body').removeClass('loading');
+
+                            setTimeout(() => {
+                                popup.addClass('d-none');
+                            }, 5000);
+                        }
+
+                        $('#verifyForm').on('submit', function (e) {
+                            e.preventDefault();
+
+                            var f = $(e.currentTarget);
+
+                            var form = $('#verifyForm')[0];
+                            var dt = new FormData(form);
+                            dt.append("imgData", imgData);
+                            dt.append("frontPicture", document.getElementById("frontPicture").getAttribute("value"));
+                            dt.append("backPicture", document.getElementById("backPicture").getAttribute("value"));
+
+                            $.ajax({
+                                type: 'POST',
+                                url: f.attr('action'),
+                                data: dt,
+                                cache: false,
+                                contentType: false,
+                                processData: false,
+                                success: handleResponse,
+                                error: handleError
+
+                            });
+
+                        });
+
+
+                    });
+                </script>
             </div>
-        </div>
-
-        <div class="mt-5 parent">
-        <div class="mt-5">
-            <div class="profile-pic-div mt-5" id="picDiv">
-                <img src="~/images/silhouette.jpeg" id="photo" class="imgPhoto img-fluid img-responsive" />
-                <label for="file" id="uploadBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Click to snap a Photo</label>
-            </div>
-        </div>
-        </div>
-        
-        <div class="row form-group">
-            <div class="col-100">
-                <label for="actNo">Account Number</label>
-            </div>
-            <div class="col-100">
-                <input type="text" id="actNo" name="customer.actNo" placeholder="Enter your account number here..." class="form-control">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-100">
-                <label for="actName">Account Name</label>
-            </div>
-            <div class="col-100">
-                <input type="text" id="actName" name="customer.actName" placeholder="Enter your account name here..." class="form-control">
-            </div>
-        </div>
-        
-        <div class="row form-group">
-            <div class="col-100">
-                <label for="TelNo">Telephone Number (eg: 024xxxxxxx)</label>
-            </div>
-            <div class="col-100">
-                <input type="text" id="TelNo" name="customer.TelNo" placeholder="Enter telephone number on file here..." class="form-control">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-100">
-                <label for="dateOfBirth">Select Date of Birth</label>
-            </div>
-            <div class="col-100">
-                <input type="date" id="dateOfBirth" name="customer.dateOfBirth" placeholder="Select date of Birth" class="form-control">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <div class="col-100">
-                <label for="ghCardNo">Ghana Card Number (eg: GHA-xxxxxxxxx-x)</label>
-            </div>
-            <div class="col-100">
-                <input type="text" id="ghCardNo" name="customer.ghCardNo" placeholder="Enter your Ghana card number here" class="form-control">
-            </div>
-        </div>
-
-        <br />
-        <div class="row flex-container">
-            <div class="flex-child">
-                <label>Click on image below to upload front-facing part of National ID</label>
-            </div>
-            <div class="flex-child">
-                <label>Click on image below to upload back-facing part of National ID</label>
-            </div>
-        </div>
-
-        <div class="flex-container">
-            <div class="flex-child front-pic">
-                <input type="file" name="fpic" id="fpic" accept="image/*" class="form-control" style="display:none;">
-                <img src="~/images/nat_id_front.jpg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive">
-            </div>
-            <div class="flex-child back-pic">
-                <input type="file" name="bpic" id="bpic" accept="image/*" class="form-control" style="display:none;">
-                <img src="~/images/nat_id_back.jpg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive">
-            </div>
-        </div>
-
-        <div class="row form-group">
-            <br />
-            <input type="text" id="imgData" name="customer.imgData" value="" hidden>
-        </div>
-        <div class="row form-group">
-            <br />
-            <input type="text" id="backPicture" name="customer.backPicture" value="" hidden>
-        </div>
-        <div class="row form-group">
-            <br />
-            <input type="text" id="frontPicture" name="customer.frontPicture" value="" hidden>
-        </div>
-
-        <br />
-        <div class="row">
-            <br />
-            <input type="submit" id="btnSubmit" value="Click to Verify">
-        </div>
-
-    </form>
-
-    <div class="loader"></div>
-
-    <script src="~/js/imgPreviewer.js" defer></script>
-    <script src="~/js/ghcard.js" defer></script>
-    <script>
-
-        const btn = document.getElementById("takeApic");
-        const cancelBtn = document.getElementById("cancelBtn");
-        const imgData = document.getElementById("imgData");
-        const video = document.getElementById("vid");
-        const hidden_canvas = document.getElementById("c");
-        const photo = document.getElementById("photo");
-
-        const width = 640;
-        const height = 480;
-
-        const context = hidden_canvas.getContext("2d");
-
-        const picDiv = document.getElementById("picDiv");
-        const submitBtn = document.getElementById("btnSubmit");
-        const modal = document.getElementById("myModal");
-
-        const msgDialog = document.getElementById("msgDialog");
-
-        const cameraBtn = document.getElementById("uploadBtn");
-
-        let activeImage;
-
-        let cameraStream;
-
-        picDiv.addEventListener("click", (ev) => {
-            ev.preventDefault();
-
-            modal.style.display = "block";
-        });
-
-        function showMessage(title, msg) {
-            myVar = setTimeout(showPage(title, msg), 3000);
-        }
-
-        cancelBtn.addEventListener("click", function (e) {
-            e.preventDefault();
-            modal.style.display = "none";
-        })
-
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-
-            if (event.target == msgDialog) {
-                msgDialog.style.display = "none";
-            }
-        }
-
-        var constraints = {
-            audio: false,
-            video: {
-                width: 640,
-                height: 480
-            }
-        }
-
-        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-            cameraStream = stream;
-            video.srcObject = stream;
-            video.play();
-        }).catch(function (err) {
-            /* catch error here */
-        })
-
-        
-        function turnCameraOff(stream) {
-            stream.getTracks().forEach(function (track) {
-                if (track.readyState == 'live' && track.kind === 'video') {
-                    track.stop();
-                }
-            });
-
-            stream = null;
-        }
-
-        function takeSnapShot() {
-
-            hidden_canvas.width = width;
-            hidden_canvas.height = height;
-
-            context.drawImage(video, 0, 0, width, height);
-
-            const imageDataUrl = hidden_canvas.toDataURL("image/png");
-
-            imgData.setAttribute("value", imageDataUrl);
-
-            photo.setAttribute("src", imageDataUrl);
-        }
-
-        btn.addEventListener("click", () => {
-            takeSnapShot();
-            cancelBtn.click();
-        });</script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            $body = $("body");
-
-            $(document).on({
-                ajaxStart: function () { $body.addClass("loading"); },
-                ajaxStop: function () { $body.removeClass("loading"); }
-            });
-
-            function handleResponse(res) {
-
-                if (res.status.toString() == "true") {
-                    alert(res.data.toString());
-
-                    document.getElementById("verifyForm").reset();
-
-                    $("#photo").addClass("photoSource");
-                    $("#fpic").addClass("idFront");
-                    $("#bpic").addClass("idBack");
-                }
-                else
-                {
-                    alert(res.data.toString());
-                }
-            }
-
-            function handleError(err) {
-
-                if (xhr.responseText)
-                    showErrorMessage(xhr.responseText);
-                else
-                    showErrorMessage("Error has occured. Please try again later.");
-
-            }
-
-            function showErrorMessage(message) {
-                var popup = $('#errorAlert');
-                popup.removeClass('d-none');
-                $('body').removeClass('loading');
-
-                setTimeout(() => {
-                    popup.addClass('d-none');
-                }, 5000);
-            }
-
-            $('#verifyForm').on('submit', function (e) {
-                e.preventDefault();
-
-                var f = $(e.currentTarget);
-
-                var form = $('#verifyForm')[0];
-                var dt = new FormData(form);
-                dt.append("imgData", imgData);
-                dt.append("frontPicture", document.getElementById("frontPicture").getAttribute("value"));
-                dt.append("backPicture", document.getElementById("backPicture").getAttribute("value"));
-
-                $.ajax({
-                    type: 'POST',
-                    url: f.attr('action'),
-                    data: dt,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: handleResponse,
-                    error: handleError
-
-                });
-
-            });
-
-
-        });</script>
-
-
-</div>
+        </main>
+    </div>
