@@ -36,25 +36,32 @@ namespace VerificationWebApp.Controllers
                 
                 if (await requestService.CallVerificationAPIAsync(customer.ghCardNo))
                 {
-                    return Json(new { status = false, data = string.Format("{0} with account Number {1} has already undergone successful verification", customer.actName, customer.actNo) });
+                    return Json(new { status = false, data = string.Format("Data of {0} has already been submitted", customer.actName) });
                 }
 
                 var obj = await requestService.CallDatabaseRecordAPIAsync(customer.TelNo,customer.dateOfBirth.ToString("yyyy-MM-dd"));
 
+                if (obj.responseCode == @"01")
+                {
+                    //object is null. account number not found in database
+                    return Json(new { status = false, data = "Account number not found" });
+                }
+
                 if (obj.DoBverification == false)
                 {
+                    //date of birth verification returned false
                     return Json(new { status = false, data = string.Format("Date of birth supplied by {0} does not match one in Database",customer.actName) });
                 }
 
                 if (obj.verificationStatus == false)
                 {
-                    return Json(new { status = false, data = "Telephone number NOT found on file" });
+                    //telephone number verification returned false
+                    return Json(new { status = false, data = "Telephone number NOT found in Database" });
                 }
-
+                
                 if (obj != null)
                 {
                     //bool blnStatus = false;
-
                     var objPayLoad = new PayLoad()
                     {
                         pinNumber = customer.ghCardNo.Trim(),
@@ -71,7 +78,6 @@ namespace VerificationWebApp.Controllers
                     };
 
                     //var dt = await api.ApiRequestDataAsync(objPayLoad);
-
                     bool b = await requestService.SaveRecordAsync(obj, customer, new data { }, objPayLoad.image);
 
                     if (b)
