@@ -59,31 +59,40 @@ namespace VerificationWebApp.Models
 				apiHeader = ConfigObject.API_KEY
 			};
 
-			var returnObj = await api.GetDatabaseRecordAsync(databasePayLoad);
-
-			/* format and send response to client */
-			if (returnObj != null)
+            try
             {
-				db = new DbVerification() {
-					customerNumber = returnObj.customerNumber,
-					accountNumber  = returnObj.accountNumber,
-					fullName = returnObj.fullName,
-					dateOfBirth = formatDoB(returnObj.dateOfBirth.Split('/')),
-					documentType = returnObj.documentType,
-					documentNumber = returnObj.documentNumber,
-					gender = returnObj.gender,
-					motherMaidenName = returnObj.motherMaidenName,
-					mobileNumber = returnObj.mobileNumber,
-					responseCode = returnObj.responseCode,
-					description = returnObj.description,
-					additionalData = returnObj.additionalData
-				};
+				var returnObj = await api.GetDatabaseRecordAsync(databasePayLoad);
 
-				db.verificationStatus = doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
-				db.DoBverification = isValidDob(DoB, db.dateOfBirth);
+				/* format and send response to client */
+				if (returnObj != null)
+				{
+					db = new DbVerification();
+
+					db.responseCode = returnObj.responseCode;
+
+					db.customerNumber = returnObj.customerNumber;
+					db.accountNumber = returnObj.accountNumber;
+					db.fullName = returnObj.fullName;
+					db.dateOfBirth = formatDoB(returnObj.dateOfBirth.Split('/'));
+					db.documentType = returnObj.documentType;
+					db.documentNumber = returnObj.documentNumber;
+					db.gender = returnObj.gender;
+					db.motherMaidenName = returnObj.motherMaidenName;
+					db.mobileNumber = returnObj.mobileNumber;
+					db.description = returnObj.description;
+					db.additionalData = returnObj.additionalData;
+					
+					db.verificationStatus = doesMobileExist(mobileNo, db.mobileNumber.Split('|'));
+					db.DoBverification = isValidDob(DoB, db.dateOfBirth);
+				}
+
+				return db;
+			}
+			catch(Exception x)
+            {
+				Debug.Print($"error: {x.Message}");
+				return db;
             }
-            
-			return db;
         }
 
 		private bool isValidDob(string suppliedDoB, string dbaseDoB)
