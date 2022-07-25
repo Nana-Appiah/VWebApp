@@ -59,7 +59,7 @@ namespace VerificationWebApp.Controllers
                     return Json(new { status = false, data = "Telephone number NOT found in Database" });
                 }
                 
-                if (obj != null)
+                if (obj.responseCode == @"00")
                 {
                     //bool blnStatus = false;
                     var objPayLoad = new PayLoad()
@@ -86,7 +86,7 @@ namespace VerificationWebApp.Controllers
                     }
                     else
                     {
-                        return Json(new { status = false, data = string.Format("Sorry, your account exists but you failed Liveness test") });
+                        return Json(new { status = false, data = string.Format("Sorry, your data could not be submitted.Please try again") });
                     }
                     //if (b)
                     //{
@@ -125,7 +125,7 @@ namespace VerificationWebApp.Controllers
                     }
                     */
                 }
-                else { return Json(new { status = false, data = $"account Number does not exist in the banking database" }); }
+                else { return Json(new { status = false, data = $"Account number not found" }); }
             }
             catch(Exception x)
             {
