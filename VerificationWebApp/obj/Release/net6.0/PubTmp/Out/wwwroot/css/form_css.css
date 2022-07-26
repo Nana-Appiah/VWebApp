@@ -37,9 +37,9 @@ input[type=submit] {
 
 /* Style the container */
 .container {
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: #f2f2f2;
-    padding: 20px;
+    padding-bottom: 20px;
     position: relative;
 }
 
@@ -154,18 +154,18 @@ img {
 
 .parent {
     position: relative;
-    height: 340px;
+    height: 400px;
     width: 600px;
     padding: 20px;
     left: 50%;
-    transform: translate(-50%,-20%);
+    transform: translate(-50%,-10%);
     border-radius: 5%;
     overflow: hidden;
     border: 1px solid grey;
     margin-left: auto;
     margin-right: auto;  
     border: none;
-    margin:15px;
+    margin:0px;
     /* centering child div */
     display: flex;
     justify-content: center;
