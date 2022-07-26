@@ -149,7 +149,7 @@ namespace VerificationWebApp.Models
             }
         }
 
-		public async Task<bool> CallVerificationAPIAsync(string GHCardNo)
+		public async Task<VerificationPayload> CallVerificationAPIAsync(string GHCardNo)
         {
 			//method is responsible for calling the verification API in the middleware
 			
@@ -159,9 +159,9 @@ namespace VerificationWebApp.Models
 				apiHeader = ConfigObject.API_KEY
 			};
 
-			var response = await serviceRequest.GCVerifyAsync(GHCardNo);
+			return await serviceRequest.GCVerifyAsync(GHCardNo);
 
-			return response.responseCode == @"00" ? true : false;
+			//return response.responseCode == @"00" ? true : false;
         }
 
 		public async Task<bool> SaveRecordAsync(DbVerification dbo, CustomerModel obj, data ghCardVerificationResponse, string LIVENESS_STRING)
