@@ -179,7 +179,7 @@ namespace middleWare
 
                         obj = new VerificationPayload()
                         {
-                            shortGuid = _parsed["shortGuid"].ToString(),
+                            //shortGuid = _parsed["shortGuid"].ToString(),
                             responseCode = _parsed["responseCode"].ToString(),
                             description = _parsed["description"].ToString(),
                             additionalData = _parsed["additionalData"].ToString()
