@@ -15,6 +15,7 @@ ConfigObject.GhanaCardVerificationAPI = settings.verifyGHCardAPI;
 ConfigObject.postCustomerDataAPI = settings.postDataAPI;
 
 ConfigObject.API_KEY = settings.apiKey;
+ConfigObject.SELFIE = settings.useSelfie;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

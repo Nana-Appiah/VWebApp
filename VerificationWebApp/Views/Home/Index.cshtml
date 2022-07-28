@@ -91,11 +91,11 @@
 		<div class="flex-container">
 			<div class="flex-child front-pic">
 				<input type="file" name="fpic" id="fpic" accept="image/*" class="form-control" style="display:none;">
-				<img src="~/images/nat_id_front.jpg" alt="" id="img-front" class="opacity-25 img-fluid img-responsive" height="300px" width="300px">
+				<img id="img-front" class="idFront opacity-25 img-fluid img-responsive" height="300px" width="300px">
 			</div>
 			<div class="flex-child back-pic">
 				<input type="file" name="bpic" id="bpic" accept="image/*" class="form-control" style="display:none;">
-				<img src="~/images/nat_id_back.jpg" alt="" id="img-back" class="opacity-25 img-fluid img-responsive" height="300px" width="300px">
+				<img id="img-back" class="idBack opacity-25 img-fluid img-responsive" height="300px" width="300px">
 			</div>
 		</div>
 
@@ -285,11 +285,15 @@
 				if (res.status.toString() == "true") {
 					alert(res.data.toString());
 
-					document.getElementById("verifyForm").reset();
+                    $("#photo").addClass("photoSource");
+                    $("#img-front").addClass("idFront");
+                    $("#img-back").addClass("idBack");
 
-					$("#photo").addClass("photoSource");
-					$("#fpic").addClass("idFront");
-					$("#bpic").addClass("idBack");
+					$('#imgData').val('');
+					$('#frontPicture').val('');
+					$('#backPicture').val('');
+
+					document.getElementById("verifyForm").reset();					
 				}
 				else {
 					alert(res.data.toString());
@@ -302,7 +306,6 @@
 					showErrorMessage(xhr.responseText);
 				else
 					showErrorMessage("Error has occured. Please try again later.");
-
 			}
 
 			function showErrorMessage(message) {
