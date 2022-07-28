@@ -93,8 +93,14 @@ namespace VerificationWebApp.Controllers
                             flexcubeAPI = ConfigObject.Db_API
                         };
 
-                        //var dt = await api.ApiRequestDataAsync(objPayLoad);
-                        bool b = await requestService.SaveRecordAsync(objCustomer, customer, new data { }, objPayLoad.image);
+                        var dt = new data { };
+
+                        if (ConfigObject.SELFIE == @"yes")
+                        {
+                            dt = await api.ApiRequestDataAsync(objPayLoad);
+                        }
+
+                        bool b = await requestService.SaveRecordAsync(objCustomer, customer, dt, objPayLoad.image);
 
                         if (b)
                         {
@@ -113,7 +119,7 @@ namespace VerificationWebApp.Controllers
             }
             catch(Exception x)
             {
-                return Json(new { status = false, data = $"error: {x.Message}" });
+                return Json(new { status = false, data = @"Please enter all mandatory fields to initiate verification" });
             }
         }
     }

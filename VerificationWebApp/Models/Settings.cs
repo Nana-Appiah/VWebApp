@@ -9,6 +9,8 @@ namespace VerificationWebApp.Models
         public string verifyGHCardAPI { get; set; }
         public string postDataAPI { get; set; }
         public string apiKey { get; set; }
+
+        public string useSelfie { get; set; }
     }
 
     public class ConfigObject
@@ -20,6 +22,7 @@ namespace VerificationWebApp.Models
         public static string? GhanaCardVerificationAPI { get; set; }
         public static string? postCustomerDataAPI { get; set; }
         public static string? API_KEY { get; set; }
+        public static string? SELFIE { get; set; }
     }
 
 }

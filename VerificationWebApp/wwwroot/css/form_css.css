@@ -104,11 +104,11 @@ img {
 }
 
 .idBack{
-    content: url("../images/NationalCard-back.jpeg")
+    content: url("../images/nat_id_back.jpg")
 }
 
 .idFront{
-    content:url("../images/NationalCard-front.jpeg")
+    content:url("../images/nat_id_front.jpg")
 }
 
 .container>h3 {
