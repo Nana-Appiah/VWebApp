@@ -1,7 +1,8 @@
 ﻿<Properties StartupConfiguration="{5C738BDB-F0DF-40BF-BA18-D472CAB829A6}|Default">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="VerificationWebApp/Controllers/CustomerController.cs">
     <Files>
-      <File FileName="VerificationWebApp/Views/Home/Index.cshtml" Line="94" Column="10" />
+      <File FileName="VerificationWebApp/Views/Home/Index.cshtml" Line="294" Column="8" />
       <File FileName="VerificationWebApp/wwwroot/css/form_css.css" Line="110" Column="9" />
       <File FileName="VerificationWebApp/Controllers/CustomerController.cs" Line="40" Column="11" />
     </Files>
@@ -36,7 +37,6 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.VerificationWebApp PreferredExecutionTarget="/Applications/Firefox.app" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
